@@ -1,0 +1,6 @@
+chevron
+pandas>=1.2.0
+matplotlib
+geopandas
+tabulate
+numpy
