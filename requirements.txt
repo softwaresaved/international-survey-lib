@@ -5,3 +5,5 @@ geopandas
 tabulate
 numpy
 fire
+seaborn
+wordcloud
