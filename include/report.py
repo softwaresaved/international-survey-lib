@@ -16,7 +16,8 @@ COUNTRIES = [
 ]
 COUNTRIES_WITH_WORLD = COUNTRIES + ["World"]
 
-REQUIRED_PATHS = ["csv", "fig", "report"]
+REPORT_PATH = "_section"
+REQUIRED_PATHS = ["csv", "fig", REPORT_PATH]
 
 
 def slugify(x):
@@ -50,7 +51,7 @@ def read_cache(name):
 def make_report(file):
     def inner_decorator(generator):
         def func(**kwargs):
-            base = Path(file).stem
+            base = Path(file).stem.replace("_", "-")
             year = (
                 int(Path(file).resolve().parent.stem)
                 or datetime.datetime.utcnow().year()
@@ -75,7 +76,7 @@ def make_report(file):
 
             report = generator(survey_year=year, **kwargs)
             with template.open() as fp:
-                (Path("report") / (filename)).write_text(chevron.render(fp, report))
+                (Path(REPORT_PATH) / (filename)).write_text(chevron.render(fp, report))
             return report
 
         return func
@@ -89,7 +90,7 @@ def table(name, data, index=True):
     return {
         "t_"
         + name: data.to_markdown(index=index)
-        + "\n\n[Download CSV](%s)" % ("../" + csv)
+        + "\n\n[Download CSV](%s)" % ("/" + csv)
     }
 
 
@@ -99,7 +100,7 @@ def table_country(country, name, data, index=True):
     return {
         "t_"
         + name: data.to_markdown(index=index)
-        + "\n\n[Download CSV](%s)" % ("../" + csv)
+        + "\n\n[Download CSV](%s)" % ("/" + csv)
     }
 
 
@@ -107,7 +108,7 @@ def figure(name, plt):
     figpath = "fig/%s.png" % name
     plt.savefig(figpath, dpi=300)
     plt.close('all')
-    return {"f_" + name: "![%s](%s)" % (name, "../" + figpath)}
+    return {"f_" + name: "![%s](%s)" % (name, "/" + figpath)}
 
 
 def figure_country(country, name, plt):
@@ -115,7 +116,7 @@ def figure_country(country, name, plt):
     figpath = "fig/%s_%s.png" % (name, slug)
     plt.savefig(figpath, dpi=300)
     plt.close('all')
-    return {"f_" + name: "![%s](%s)" % (name + "_" + slug, "../" + figpath)}
+    return {"f_" + name: "![%s](%s)" % (name + "_" + slug, "/" + figpath)}
 
 
 def first_existing(paths):
