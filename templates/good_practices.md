@@ -1,4 +1,11 @@
+---
+layout: page
+title: Good practices
+---
 # Good practices
+
+1. TOC
+{:toc}
 
 This section comprises sections that focus on the technical and development
 aspects of the RSEs' work. They aim to understand good practices in developing

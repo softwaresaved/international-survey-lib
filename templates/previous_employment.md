@@ -1,4 +1,11 @@
+---
+layout: page
+title: Previous employment
+---
 # Previous employment
+
+1. TOC
+{:toc}
 
 Several questions were about the participants' previous job. The idea is to
 collect insights of their career path and understand what their motivations are

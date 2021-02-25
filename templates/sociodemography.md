@@ -1,4 +1,11 @@
+---
+layout: page
+title: Sociodemography
+---
 # Sociodemography
+
+1. TOC
+{:toc}
 
 Here we asked questions to know the sociodemographic composition of our participants, including the age, the gender and the disability and ethnicity for specific countries.
 

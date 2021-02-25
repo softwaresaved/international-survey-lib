@@ -1,4 +1,11 @@
+---
+layout: page
+title: Professional developer
+---
 # Professional developer
+
+1. TOC
+{:toc}
 
 In this section we investigate the relationship between RSEs/RSDs and their own
 experience in software development Understandably, we expect them having

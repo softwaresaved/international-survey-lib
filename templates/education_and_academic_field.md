@@ -1,4 +1,11 @@
+---
+layout: page
+title: Education and academic field
+---
 # Education and academic field
+
+1. TOC
+{:toc}
 
 This section contains the information about the type of education the
 participants have, as well as their highest degree obtained.

@@ -1,4 +1,11 @@
+---
+layout: page
+title: Job satisfaction
+---
 # Job satisfaction
+
+1. TOC
+{:toc}
 
 Job satisfaction is an essential pulse to take about a community's health.
 It helps to track the evolution and the current state of the RSEs within their

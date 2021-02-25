@@ -1,4 +1,11 @@
+---
+layout: page
+title: Open source and DOI
+---
 # Open source and DOI
+
+1. TOC
+{:toc}
 
 RSEs is an hybrid role between a researcher and a software developer. We
 investigated both of these aspects concerning publication and dissemination of

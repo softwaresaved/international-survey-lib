@@ -1,4 +1,11 @@
+---
+layout: page
+title: Current employment
+---
 # Current employment
+
+1. TOC
+{:toc}
 
 Questions in the sections:
 

@@ -1,4 +1,11 @@
+---
+layout: page
+title: How time is spent
+---
 # How time is spent
+
+1. TOC
+{:toc}
 
 RSE/RSE are supposed to be an hybrid role, compared to pure software developer.
 They bring a knowledge from their field but also are developing software. To

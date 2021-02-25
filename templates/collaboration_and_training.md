@@ -1,4 +1,11 @@
+---
+layout: page
+title: Collaboration and training
+---
 # Collaboration and training
+
+1. TOC
+{:toc}
 
 Questions in this section:
 

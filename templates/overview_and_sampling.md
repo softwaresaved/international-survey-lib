@@ -1,6 +1,13 @@
-# Introduction
+---
+layout: page
+title: Overview
+---
+# Overview
 
-This notebook gives an overview of the participants per country. From where they come from and when they started the survey. It also gives the difference with the previous year for the countries that participated in 2017.
+1. TOC
+{:toc}
+
+This page gives an overview of the participants per country. From where they come from and when they started the survey. It also gives the difference with the previous year for the countries that participated in 2017.
 
 Alongside this information, it also subset the relevant participants for future analysis. Only the participants that have finished at least the first section and the ones that report to develop program for their work, or lead research developers, are kept.
 
