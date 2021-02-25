@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Collaboration and training
+nav_order: 7
 ---
 # Collaboration and training
 

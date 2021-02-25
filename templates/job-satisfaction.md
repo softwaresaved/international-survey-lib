@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Job satisfaction
+nav_order: 12
 ---
 # Job satisfaction
 

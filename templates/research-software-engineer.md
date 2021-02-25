@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Research software engineer
+nav_order: 14
 ---
 # Research software engineer
 

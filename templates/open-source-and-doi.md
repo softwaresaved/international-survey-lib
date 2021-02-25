@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Open source and DOI
+nav_order: 9
 ---
 # Open source and DOI
 

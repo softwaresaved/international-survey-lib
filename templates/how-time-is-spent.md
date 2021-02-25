@@ -1,6 +1,7 @@
 ---
 layout: page
 title: How time is spent
+nav_order: 5
 ---
 # How time is spent
 

@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Education and academic field
+nav_order: 2
 ---
 # Education and academic field
 

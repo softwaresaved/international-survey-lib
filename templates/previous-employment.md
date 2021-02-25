@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Previous employment
+nav_order: 6
 ---
 # Previous employment
 

@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Good practices
+nav_order: 10
 ---
 # Good practices
 

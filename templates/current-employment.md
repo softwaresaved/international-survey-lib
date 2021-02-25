@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Current employment
+nav_order: 3
 ---
 # Current employment
 

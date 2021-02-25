@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Publications and citations
+nav_order: 8
 ---
 # Publications and citations
 
