@@ -17,6 +17,7 @@ COUNTRIES = [
 COUNTRIES_WITH_WORLD = COUNTRIES + ["World"]
 
 REPORT_PATH = "_section"
+BASEURL = "/international-survey-analysis/"
 REQUIRED_PATHS = ["csv", "fig", REPORT_PATH]
 
 
@@ -90,7 +91,7 @@ def table(name, data, index=True):
     return {
         "t_"
         + name: data.to_markdown(index=index)
-        + "\n\n[Download CSV](%s)" % ("/" + csv)
+        + "\n\n[Download CSV](%s)" % (BASEURL + csv)
     }
 
 
@@ -100,7 +101,7 @@ def table_country(country, name, data, index=True):
     return {
         "t_"
         + name: data.to_markdown(index=index)
-        + "\n\n[Download CSV](%s)" % ("/" + csv)
+        + "\n\n[Download CSV](%s)" % (BASEURL + csv)
     }
 
 
@@ -108,7 +109,7 @@ def figure(name, plt):
     figpath = "fig/%s.png" % name
     plt.savefig(figpath, dpi=300)
     plt.close('all')
-    return {"f_" + name: "![%s](%s)" % (name, "/" + figpath)}
+    return {"f_" + name: "![%s](%s)" % (name, BASEURL + figpath)}
 
 
 def figure_country(country, name, plt):
@@ -116,7 +117,7 @@ def figure_country(country, name, plt):
     figpath = "fig/%s_%s.png" % (name, slug)
     plt.savefig(figpath, dpi=300)
     plt.close('all')
-    return {"f_" + name: "![%s](%s)" % (name + "_" + slug, "/" + figpath)}
+    return {"f_" + name: "![%s](%s)" % (name + "_" + slug, BASEURL + figpath)}
 
 
 def first_existing(paths):
