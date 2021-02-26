@@ -1,3 +1,4 @@
+import os
 import sys
 import chevron
 import datetime
@@ -53,10 +54,12 @@ def make_report(file):
     def inner_decorator(generator):
         def func(**kwargs):
             base = Path(file).stem.replace("_", "-")
-            year = (
-                int(Path(file).resolve().parent.stem)
-                or datetime.datetime.utcnow().year()
-            )
+            year = os.environ.get("RSE_SURVEY_YEAR")
+            if year is None:
+                print("Set current year in RSE_SURVEY_YEAR environment variable")
+                sys.exit(1)
+            else:
+                year = int(year)
             filename = base + ".md"
             template = first_existing(
                 [Path("templates") / filename, Path("../templates") / filename]
