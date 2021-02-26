@@ -548,7 +548,7 @@ def plot_cat_comparison(df, country, category, order_index=False, figsize=(6.4, 
         # current field
         axs[0].barh(ind, df["Percentage"], align="center")
 
-        axs[0].set_title("Current proportion of {} for {}".format(category, country))
+        axs[0].set_title("{}, {}".format(category, country))
         rects = axs[0].patches
 
         # Difference from last year
@@ -575,7 +575,7 @@ def plot_cat_comparison(df, country, category, order_index=False, figsize=(6.4, 
 
         # current field
         plt.barh(ind, df["Percentage"], align="center")
-        plt.title("Current proportion of {} for {}".format(category, country))
+        plt.title("{}, {}".format(category, country))
         ax.spines['top'].set_visible(False)
         ax.spines['right'].set_visible(False)
         ax.spines['bottom'].set_visible(False)
@@ -675,7 +675,7 @@ def plot_wordcloud(df, columns, country, category, survey_year):
     plot = _plot_wordcloud(txt_to_plot)
     plt.imshow(plot, cmap=plt.cm.gray, interpolation="bilinear")
     plt.axis("off")
-    plt.title("{}: {}".format(category, country))
+    plt.title("{}, {}".format(category, country))
 
 
 def radar_plotting(
