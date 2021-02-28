@@ -13,7 +13,7 @@ aspects of the RSEs' work. They aim to understand good practices in developing
 software.
 
 We chose two broad measures to provide an insight into sustainability: the
-**bus factor** and **te chnical hand over planning**.
+**bus factor** and **technical hand over planning**.
 
 *   The bus factor is a measure of the number of developers who understand
     a specific software project and could, with only a cursory review of the
