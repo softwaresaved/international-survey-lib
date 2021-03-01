@@ -527,21 +527,21 @@ def plot_density_func(df, columns, category, country, survey_year, remove_outlie
     plt.legend()
 
 
-def plot_cat_comparison(df, country, category, order_index=False, figsize=(6.4, 4.8)):
+def plot_cat_comparison(df, country, category, order_index=False, width=6.4):
     # Plotting the current categories and the difference with the last year
     from matplotlib import rcParams
     rcParams.update({'figure.autolayout': True})
-    plt.ioff()
     if order_index:
         if isinstance(order_index, list):
             df = df.reindex(order_index)
         else:
             df = df.sort_index()
     ind = np.arange(len(df.index))
+    height = max(len(df.index) / 4, 2)
 
     try:
         fig, axs = plt.subplots(
-            1, 2, sharey=True, figsize=figsize, gridspec_kw={"width_ratios": [7, 1]}
+            1, 2, sharey=True, figsize=(width, height), gridspec_kw={"width_ratios": [7, 1]}
         )
 
         plt.gcf().subplots_adjust(left=0.2)
@@ -569,7 +569,7 @@ def plot_cat_comparison(df, country, category, order_index=False, figsize=(6.4, 
 
     except KeyError:
         # Set up columns
-        fig, ax = plt.subplots(figsize=figsize)
+        fig, ax = plt.subplots(figsize=(width, height))
         if order_index is False:
             df.sort_values("Percentage", ascending=False, inplace=True)
 
