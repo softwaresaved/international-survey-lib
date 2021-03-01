@@ -531,6 +531,7 @@ def plot_cat_comparison(df, country, category, order_index=False, width=6.4):
     # Plotting the current categories and the difference with the last year
     from matplotlib import rcParams
     rcParams.update({'figure.autolayout': True})
+    plt.ioff()
     if order_index:
         if isinstance(order_index, list):
             df = df.reindex(order_index)
