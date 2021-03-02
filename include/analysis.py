@@ -510,7 +510,7 @@ def plot_density_func(df, columns, category, country, survey_year, remove_outlie
             df = df_survey_year
         df.dropna(inplace=True)
 
-    fig, axarr = plt.subplots(1, 2, figsize=(20, 10))
+    fig, axarr = plt.subplots(1, 2, figsize=(9, 6))
     sns.boxplot(x="Year", y="Value", data=df, ax=axarr[0])
 
     sns.swarmplot(
