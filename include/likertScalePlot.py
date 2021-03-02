@@ -232,7 +232,8 @@ def drawing_x_labels(ax, normalise, complete_longest, longest_middle):
     ax.set_xticklabels(xlabels)
 
 
-def likert_scale(df, ax=None, normalise=True, labels=True, middle_line=True, legend=True, rotation=0, title_plot=False, rounding=True):
+def likert_scale(df, ax=None, normalise=True, labels=True, middle_line=True, legend=True, rotation=0,
+                 title_plot=False, rounding=True, legend_loc="lower center", legend_ncol=10):
     """
     The idea is to create a fake bar on the left to center the bar on the same point.
     :params:
@@ -309,7 +310,7 @@ def likert_scale(df, ax=None, normalise=True, labels=True, middle_line=True, leg
 
         # Add legend
         if legend:
-            ax.legend(bars, df.columns, fontsize=10, loc='lower center', mode="expand", ncol=10)
+            ax.legend(bars, df.columns, fontsize=10, loc=legend_loc, mode="expand", ncol=legend_ncol)
 
         # Change the plot title
         if title_plot:
