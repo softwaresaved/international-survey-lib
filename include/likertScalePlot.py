@@ -58,7 +58,7 @@ def get_colors(df, colormap=plt.cm.RdBu, vmin=None, vmax=None, axis=1):
         return colormap(norm(range(len(values))))
 
 
-def wrap_labels(label, max_size=30):
+def wrap_labels(label, max_size=10):
     """
     Function to automatically wrap labels if they are too long
     Split only if whitespace
@@ -297,7 +297,7 @@ def likert_scale(df, ax=None, normalise=True, labels=True, middle_line=True, leg
 
         # Setting up the y-axis
         ax.set_yticks(y_pos)
-        ax.set_yticklabels([wrap_labels(labels) for labels in df.index], fontsize=14)
+        ax.set_yticklabels([wrap_labels(labels) for labels in df.index], fontsize=11)
 
         # Add labels to each box
         if labels:
@@ -309,7 +309,7 @@ def likert_scale(df, ax=None, normalise=True, labels=True, middle_line=True, leg
 
         # Add legend
         if legend:
-            ax.legend(bars, df.columns, fontsize=14)
+            ax.legend(bars, df.columns, fontsize=10, loc='lower center', mode="expand", ncol=10)
 
         # Change the plot title
         if title_plot:

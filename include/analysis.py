@@ -337,9 +337,9 @@ def plotting_likert(
     nbr_plots = 1
 
     if type_orga == "vertical":
-        fig, axs = plt.subplots(nbr_plots, 1, sharex=True, figsize=(30, 30))
+        fig, axs = plt.subplots(nbr_plots, 1, sharex=True, figsize=(9, 4))
     else:
-        fig, axs = plt.subplots(1, nbr_plots, figsize=(30, 10))
+        fig, axs = plt.subplots(1, nbr_plots, figsize=(9, 4))
     list_plots = list()
 
     for i, one_plot in enumerate(to_plots):
