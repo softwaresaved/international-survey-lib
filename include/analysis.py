@@ -389,11 +389,14 @@ def plotting_time_likert(
     dict_time_diff=None,
 ):
     """"""
+    plt.tight_layout()
     nbr_plots = len(
         [x for x in [df_time_spent, df_time_wish, df_time_diff] if x is not None]
     )
-    fig, axs = plt.subplots(1, nbr_plots, sharey=True, figsize=(30, 10))
+    fig, axs = plt.subplots(nbr_plots, 1, sharex=True, figsize=(10, 14))
     list_plots = list()
+    legend_loc = 'lower center'
+    ncol = 16
 
     if df_time_spent is not None:
         try:
@@ -404,6 +407,8 @@ def plotting_time_likert(
                 ).transpose(),
                 normalise=True,
                 legend=True,
+                legend_loc=legend_loc,
+                legend_ncol=ncol,
                 title_plot="{}: Time spent for each type of activity".format(country),
                 ax=axs[0],
             )
@@ -418,6 +423,8 @@ def plotting_time_likert(
                 ).transpose(),
                 normalise=True,
                 legend=True,
+                legend_loc=legend_loc,
+                legend_ncol=ncol,
                 title_plot="{}: Time spent for each type of activity".format(country),
                 ax=axs,
             )
@@ -432,6 +439,8 @@ def plotting_time_likert(
             ).transpose(),
             normalise=True,
             legend=True,
+            legend_loc=legend_loc,
+            legend_ncol=ncol,
             title_plot="{}: Time wish to spent for each type of activity".format(
                 country
             ),
@@ -464,6 +473,8 @@ def plotting_time_likert(
             ).transpose(),
             normalise=True,
             legend=True,
+            legend_loc=legend_loc,
+            legend_ncol=ncol,
             title_plot="{}: Difference between time wish to spent and actually spent for each type of activity".format(
                 country
             ),
