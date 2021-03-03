@@ -24,7 +24,7 @@ import numpy as np
 # When using within jupyter
 # get_ipython().magic('matplotlib inline')  # Activat that line to use in Jupyter
 
-
+from common_plot import wrap_labels
 import matplotlib.pyplot as plt
 #  When using this script with ipython and vim
 plt.ion()
@@ -232,8 +232,10 @@ def drawing_x_labels(ax, normalise, complete_longest, longest_middle):
     ax.set_xticklabels(xlabels)
 
 
-def likert_scale(df, ax=None, normalise=True, labels=True, middle_line=True, legend=True, rotation=0,
-                 title_plot=False, rounding=True, legend_loc="lower center", legend_ncol=10):
+def likert_scale(df, ax=None, normalise=True, labels=True, middle_line=True,
+                 legend=True, rotation=0, title_plot=False, rounding=True,
+                 legend_loc="lower center", legend_ncol=10,
+                 bbox_to_anchor=None, wrap_text=100):
     """
     The idea is to create a fake bar on the left to center the bar on the same point.
     :params:
@@ -298,7 +300,7 @@ def likert_scale(df, ax=None, normalise=True, labels=True, middle_line=True, leg
 
         # Setting up the y-axis
         ax.set_yticks(y_pos)
-        ax.set_yticklabels([wrap_labels(labels) for labels in df.index], fontsize=11)
+        ax.set_yticklabels([wrap_labels(labels, wrap_text) for labels in df.index], fontsize=11)
 
         # Add labels to each box
         if labels:
@@ -310,7 +312,8 @@ def likert_scale(df, ax=None, normalise=True, labels=True, middle_line=True, leg
 
         # Add legend
         if legend:
-            ax.legend(bars, df.columns, fontsize=10, loc=legend_loc, mode="expand", ncol=legend_ncol)
+            ax.legend(bars, df.columns, fontsize=10, loc=legend_loc,
+                      mode="expand", ncol=legend_ncol, bbox_to_anchor=bbox_to_anchor)
 
         # Change the plot title
         if title_plot:
