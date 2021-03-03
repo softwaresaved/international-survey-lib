@@ -639,13 +639,13 @@ def plot_cat_comparison(df, country, category, order_index=False, width=6.4):
 
 
 def plot_ranking(df, category, country):
-    fig, ax = plt.subplots()
+    fig, ax = plt.subplots(figsize=(9.5, 5))
 
     # Dropping the columns with NA (the ranks that are not present)
     df = df.dropna(axis=1, how="all")
 
     df.T.plot(
-        kind="bar",
+        kind="barh",
         title="{}: {}".format(category, country),
         grid=False,
         ax=ax,
@@ -660,18 +660,16 @@ def plot_ranking(df, category, country):
     # Put a legend below current axis
     ax.legend(
         loc="upper center",
-        bbox_to_anchor=(0.5, -0.1),
-        fancybox=True,
-        shadow=True,
-        ncol=5,
+        bbox_to_anchor=(0.5, -0.15),
+        ncol=3,
     )
     for p in ax.patches:
         if int(round(p.get_width())) >= 5:
             ax.annotate(
-                "{}%".format(str(int(round(p.get_width())))),
+                "{}".format(str(int(round(p.get_width())))),
                 (
-                    p.get_x() + int(p.get_width()) / 2.0,
-                    p.get_y() + int(p.get_height()) / 2.0,
+                    p.get_x() + p.get_width() / 2.0,
+                    p.get_y() + p.get_height() / 2 - 0.1,
                 ),
                 ha="center",
             )
