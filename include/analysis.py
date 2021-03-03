@@ -4,6 +4,7 @@ import numpy as np
 import matplotlib
 import matplotlib.pyplot as plt
 import seaborn as sns
+from common_plot import wrap_labels
 from likertScalePlot import likert_scale
 from textCleaning import plot_wordcloud as _plot_wordcloud
 from textCleaning import wrap_clean_text
@@ -389,14 +390,15 @@ def plotting_time_likert(
     dict_time_diff=None,
 ):
     """"""
-    plt.tight_layout()
     nbr_plots = len(
         [x for x in [df_time_spent, df_time_wish, df_time_diff] if x is not None]
     )
-    fig, axs = plt.subplots(nbr_plots, 1, sharex=True, figsize=(10, 14))
+    fig, axs = plt.subplots(nbr_plots, 1, sharex=True, figsize=(8.5, 12))
     list_plots = list()
     legend_loc = 'lower center'
     ncol = 16
+    bbox_to_anchor = None
+    wrap_text = 1
 
     if df_time_spent is not None:
         try:
@@ -409,6 +411,8 @@ def plotting_time_likert(
                 legend=True,
                 legend_loc=legend_loc,
                 legend_ncol=ncol,
+                bbox_to_anchor=bbox_to_anchor,
+                wrap_text=wrap_text,
                 title_plot="{}: Time spent for each type of activity".format(country),
                 ax=axs[0],
             )
@@ -425,6 +429,8 @@ def plotting_time_likert(
                 legend=True,
                 legend_loc=legend_loc,
                 legend_ncol=ncol,
+                bbox_to_anchor=bbox_to_anchor,
+                wrap_text=wrap_text,
                 title_plot="{}: Time spent for each type of activity".format(country),
                 ax=axs,
             )
@@ -441,6 +447,8 @@ def plotting_time_likert(
             legend=True,
             legend_loc=legend_loc,
             legend_ncol=ncol,
+            bbox_to_anchor=bbox_to_anchor,
+            wrap_text=wrap_text,
             title_plot="{}: Time wish to spent for each type of activity".format(
                 country
             ),
@@ -475,6 +483,8 @@ def plotting_time_likert(
             legend=True,
             legend_loc=legend_loc,
             legend_ncol=ncol,
+            bbox_to_anchor=bbox_to_anchor,
+            wrap_text=wrap_text,
             title_plot="{}: Difference between time wish to spent and actually spent for each type of activity".format(
                 country
             ),
@@ -549,7 +559,7 @@ def plot_cat_comparison(df, country, category, order_index=False, width=6.4):
         else:
             df = df.sort_index()
     ind = np.arange(len(df.index))
-    height = max(len(df.index) / 4, 2)
+    height = len(df.index) / 3 + 1
 
     try:
         fig, axs = plt.subplots(
@@ -635,7 +645,7 @@ def plot_cat_comparison(df, country, category, order_index=False, width=6.4):
                 va=va,
             )  # Vertically align label differently for
             # positive and negative values.
-    plt.yticks(ind, df.index)
+    plt.yticks(ind, wrap_labels(df.index))
 
 
 def plot_ranking(df, category, country):
@@ -676,7 +686,7 @@ def plot_ranking(df, category, country):
 
 
 def plot_wordcloud(df, columns, country, category, survey_year):
-    plt.figure()
+    plt.figure(figsize=(6, 4.5))
     df_to_sample = get_sampled_df(df, columns=columns)
     df = df_to_sample[
         (df_to_sample["Country"] == country) & (df_to_sample["Year"] == survey_year)
