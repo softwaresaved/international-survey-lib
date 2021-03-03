@@ -639,7 +639,7 @@ def plot_cat_comparison(df, country, category, order_index=False, width=6.4):
 
 
 def plot_ranking(df, category, country):
-    fig, ax = plt.subplots(figsize=(9.5, 5))
+    fig, ax = plt.subplots(figsize=(7, 5))
 
     # Dropping the columns with NA (the ranks that are not present)
     df = df.dropna(axis=1, how="all")
@@ -661,7 +661,7 @@ def plot_ranking(df, category, country):
     ax.legend(
         loc="upper center",
         bbox_to_anchor=(0.5, -0.15),
-        ncol=3,
+        ncol=2,
     )
     for p in ax.patches:
         if int(round(p.get_width())) >= 5:
