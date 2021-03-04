@@ -12,8 +12,6 @@ This page gives an overview of the participants per country. From where they com
 
 Alongside this information, it also subset the relevant participants for future analysis. Only the participants that have finished at least the first section and the ones that report to develop program for their work, or lead research developers, are kept.
 
-# Overview
-
 ## Total participants
 
 There were a total of {{n_participants}} in the survey.
@@ -51,9 +49,9 @@ Several countries did the survey last year, here a summary of the difference in 
 
 {{f_difference_with_previous_year}}
 
-# Subsetting
+## Subsetting
 
-## Selecting valid participants only
+### Selecting valid participants only
 
 On the total of participants, we only want the participants that code software during their work. 
 We had a specific question for this purpose. We asked the participants if they are writing software or if they are leading a group of software developers. Each of these questions had the possibility of Yes/No answer. Here the exact wording of the questions:
