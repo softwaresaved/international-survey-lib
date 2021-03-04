@@ -559,7 +559,7 @@ def plot_cat_comparison(df, country, category, order_index=False, width=6.4):
         else:
             df = df.sort_index()
     ind = np.arange(len(df.index))
-    height = len(df.index) / 3 + 1
+    height = (len(df.index) / 3 + 1) if len(df.index) > 2 else 1.25
 
     try:
         fig, axs = plt.subplots(
@@ -645,7 +645,7 @@ def plot_cat_comparison(df, country, category, order_index=False, width=6.4):
                 va=va,
             )  # Vertically align label differently for
             # positive and negative values.
-    plt.yticks(ind, wrap_labels(df.index))
+    plt.yticks(ind, wrap_labels(map(str, df.index)))
 
 
 def plot_ranking(df, category, country):
