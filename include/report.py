@@ -110,7 +110,7 @@ def table_country(country, name, data, index=True):
 
 def figure(name, plt):
     figpath = "fig/%s.png" % name
-    plt.savefig(figpath, dpi=300)
+    plt.savefig(figpath, dpi=os.environ.get('RSE_SURVEY_FIGURE_DPI', 150))
     plt.close('all')
     return {"f_" + name: "![%s](%s)" % (name, BASEURL + figpath)}
 
