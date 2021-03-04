@@ -1,3 +1,4 @@
+import os
 import math
 import pandas as pd
 import numpy as np
@@ -8,6 +9,13 @@ from common_plot import wrap_labels
 from likertScalePlot import likert_scale
 from textCleaning import plot_wordcloud as _plot_wordcloud
 from textCleaning import wrap_clean_text
+
+
+def get_previous_survey_year(year):
+    """Gets previous survey year from the environment variable
+    RSE_SURVEY_YEAR_PREV. If the environment variable is set,
+    returns year - 1"""
+    return int(os.environ.get("RSE_SURVEY_YEAR_PREV", year - 1))
 
 
 def get_sampled_df(df, columns):
@@ -185,7 +193,7 @@ def count_diff(
     Return a dataframe with the count of each category
     """
     # Get the count for the survey year
-    survey_year_prev = survey_year - 1
+    survey_year_prev = get_previous_survey_year(survey_year)
     df_to_use = get_sampled_df(df, columns)
     try:
         df_to_use[columns].astype("category")
@@ -283,7 +291,7 @@ def describe_diff(df, columns, country, category, survey_year, remove_outliers=T
     """
     """
     df_to_use = get_sampled_df(df, columns)
-    survey_year_prev = survey_year - 1
+    survey_year_prev = get_previous_survey_year(survey_year)
 
     df_country_survey_year = df_to_use[
         (df_to_use["Country"] == country) & (df_to_use["Year"] == survey_year)
@@ -501,7 +509,7 @@ def plotting_time_likert(
 
 
 def plot_density_func(df, columns, category, country, survey_year, remove_outliers=True):
-    survey_year_prev = survey_year - 1
+    survey_year_prev = get_previous_survey_year(survey_year)
     df_sampled = get_sampled_df(df, columns=columns)
     df_sampled.columns = ["Country", "Year", "Value"]
     df = df_sampled[df_sampled.Country == country]
