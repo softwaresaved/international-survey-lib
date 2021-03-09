@@ -121,7 +121,7 @@ def figure(name, plt):
 
 def figure_country(country, name, plt):
     plt.rcParams['svg.fonttype'] = 'none'
-    plt.rcParams['font.family'] = 'inherit'
+    plt.rcParams['font.family'] = 'sans-serif'
     plt.rcParams['font.sans-serif'] = ['Roboto', 'sans-serif']
     slug = slugify(country)
     figpath = f"fig/{name}_{slug}.{FIGURE_TYPE}"
