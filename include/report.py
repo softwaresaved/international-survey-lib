@@ -109,6 +109,18 @@ def table_country(country, name, data, index=True):
     }
 
 
+def svg_tag_text(file):
+    with open(file) as f:
+        svg_start_token = False
+        lines = []
+        for line in f:
+            if line.strip().startswith("<svg"):
+                svg_start_token = True
+            if svg_start_token:
+                lines.append(line)
+    return "".join(lines)
+
+
 def figure(name, plt):
     plt.rcParams['svg.fonttype'] = 'none'
     plt.rcParams['font.family'] = 'sans-serif'
@@ -116,7 +128,11 @@ def figure(name, plt):
     figpath = f"fig/{name}.{FIGURE_TYPE}"
     plt.savefig(figpath, dpi=os.environ.get('RSE_SURVEY_FIGURE_DPI', 300))
     plt.close('all')
-    return {f"f_{name}": f"![{name}]({BASEURL}{figpath})"}
+    if FIGURE_TYPE == "svg":
+        # Embed svg to allow font-family use from CSS
+        return {f"f_{name}": f"{{% raw %}}\n{svg_tag_text(figpath)}\n{{% endraw %}}"}
+    else:
+        return {f"f_{name}": f"![{name}]({BASEURL}{figpath})"}
 
 
 def figure_country(country, name, plt):
