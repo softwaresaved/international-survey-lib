@@ -34,16 +34,16 @@ Questions in the section:
 
 {{t_acknowledgment-in-paper}}
 
-{{f_acknowledgment-in-paper}}
+{{{f_acknowledgment-in-paper}}}
 
 ### Participation in conferences
 
 {{t_did-you-participate-in-conference}}
 
-{{f_did-you-participate-in-conference}}
+{{{f_did-you-participate-in-conference}}}
 
 ### Conference name
 
-{{f_conference-name-wordcloud}}
+{{{f_conference-name-wordcloud}}}
 
 {{/countries}}

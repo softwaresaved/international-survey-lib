@@ -26,12 +26,12 @@ Questions in this section:
 
 {{t_programming-languages}}
 
-{{f_programming-languages}}
+{{{f_programming-languages}}}
 
 ### Operating systems
 
 {{t_operating-systems}}
 
-{{f_operating-systems}}
+{{{f_operating-systems}}}
 
 {{/countries}}

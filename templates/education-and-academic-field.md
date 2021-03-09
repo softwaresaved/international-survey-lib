@@ -32,7 +32,7 @@ selected at least one option.
 
 {{t_education_level}}
 
-{{f_education_level}}
+{{{f_education_level}}}
 
 {{/education_level}}
 
@@ -45,7 +45,7 @@ with these two equivalent levels and merge all others under the category
 
 {{t_compare_education_level}}
 
-{{f_compare_education_level}}
+{{{f_compare_education_level}}}
 
 ## Academic field for education and professional development
 
@@ -61,9 +61,9 @@ despite lot of overlapping in the categories.
 
 {{t_academic_field_edu}}
 
-{{f_academic_field_edu}}
+{{{f_academic_field_edu}}}
 
-{{f_academic_field_edu_wordcloud}}
+{{{f_academic_field_edu_wordcloud}}}
 
 {{/academic_field_edu}}
 
@@ -75,6 +75,6 @@ despite lot of overlapping in the categories.
 
 {{t_academic_field_work}}
 
-{{f_academic_field_work}}
+{{{f_academic_field_work}}}
 
 {{/academic_field_work}}

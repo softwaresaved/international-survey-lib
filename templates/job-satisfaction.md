@@ -81,24 +81,24 @@ References
 
 ### General satisfaction
 
-{{f_general-satisfaction}}
+{{{f_general-satisfaction}}}
 
 ### Recognition
 
-{{f_recognition}}
+{{{f_recognition}}}
 
 ### Turn-over intention
 
-{{f_consider-leaving-job}}
+{{{f_consider-leaving-job}}}
 
-{{f_would-accept-another-job-at-same-compensation}}
+{{{f_would-accept-another-job-at-same-compensation}}}
 
 ### Perceived employability
 
-{{f_perceived-employability}}
+{{{f_perceived-employability}}}
 
 ### Progression in the current role
 
-{{f_progression-in-the-current-role}}
+{{{f_progression-in-the-current-role}}}
 
 {{/countries}}

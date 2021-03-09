@@ -24,20 +24,20 @@ Questions in this section:
 
 {{t_age}}
 
-{{f_age}}
+{{{f_age}}}
 
 ### Gender
 
 {{t_gender}}
 
-{{f_gender}}
+{{{f_gender}}}
 
 {{#t_ethnicity}}
 ### Ethnicity
 
 {{t_ethnicity}}
 
-{{f_ethnicity}}
+{{{f_ethnicity}}}
 
 {{/t_ethnicity}}
 {{#t_disability}}
@@ -45,7 +45,7 @@ Questions in this section:
 
 {{t_disability}}
 
-{{f_disability}}
+{{{f_disability}}}
 
 {{/t_disability}}
 {{#t_hispanic-or-latino}}
@@ -53,7 +53,7 @@ Questions in this section:
 
 {{t_hispanic-or-latino}}
 
-{{f_hispanic-or-latino}}
+{{{f_hispanic-or-latino}}}
 
 {{/t_hispanic-or-latino}}
 {{/countries}}

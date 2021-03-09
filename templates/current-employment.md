@@ -29,54 +29,54 @@ Questions in the sections:
 
 {{t_organisation-type}}
 
-{{f_organisation-type}}
+{{{f_organisation-type}}}
 
 ### In which field are you working
 
 {{t_in-which-field}}
 
-{{f_in-which-field}}
+{{{f_in-which-field}}}
 
 ### Which university or organization
 
 {{t_which-university}}
 
-{{f_which-university}}
+{{{f_which-university}}}
 
 ### Type of contract
 
 {{t_contract-type}}
 
-{{f_contract-type}}
+{{{f_contract-type}}}
 
 ### Full time or part-time
 
 {{t_nature_of-employment}}
 
-{{f_nature_of_employment}}
+{{{f_nature_of_employment}}}
 
 ### Length of current position
 
 {{t_duration-of-contract-in-year}}
 
-{{f_duration-of-contract-in-year}}
+{{{f_duration-of-contract-in-year}}}
 
 ### Salary
 
 {{t_salary}}
 
-{{f_salary}}
+{{{f_salary}}}
 
 ### Funding
 
 {{t_type-of-funding}}
 
-{{f_type-of-funding}}
+{{{f_type-of-funding}}}
 
 ### Job title
 
-{{f_official-job-title}}
+{{{f_official-job-title}}}
 
-{{f_different-job-title}}
+{{{f_different-job-title}}}
 
 {{/countries}}

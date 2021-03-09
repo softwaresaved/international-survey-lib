@@ -52,6 +52,6 @@ All questions were asked on a 1 to 10 Likert scale.
 
 ## {{country}}
 
-{{f_how-time-is-spent}}
+{{{f_how-time-is-spent}}}
 
 {{/countries}}

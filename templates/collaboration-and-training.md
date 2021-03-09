@@ -30,36 +30,36 @@ Questions in this section:
 
 {{t_developing-code-for-others}}
 
-{{f_developing-code-for-others}}
+{{{f_developing-code-for-others}}}
 
 ### Working with same researchers
 
 {{t_working-with-same-researchers}}
 
-{{f_working-with-same-researchers}}
+{{{f_working-with-same-researchers}}}
 
 ### Part of dedicated group
 
 {{t_member-of-a-dedicated-group}}
 
-{{f_member-of-a-dedicated-group}}
+{{{f_member-of-a-dedicated-group}}}
 
 ### Number of projects
 
 {{t_number-of-software-projects}}
 
-{{f_number-of-software-projects}}
+{{{f_number-of-software-projects}}}
 
 {{t_number-of-software-developers-per-projects}}
 
-{{f_number-of-software-developers-per-projects}}
+{{{f_number-of-software-developers-per-projects}}}
 
 ### Training
 
 {{t_training-frequency}}
 
-{{f_training-frequency}}
+{{{f_training-frequency}}}
 
-{{f_training-name-wordcloud}}
+{{{f_training-name-wordcloud}}}
 
 {{/countries}}

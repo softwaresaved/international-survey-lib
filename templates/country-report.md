@@ -29,7 +29,7 @@ selected at least one option.
 
 {{t_education_level}}
 
-{{f_education_level}}
+{{{f_education_level}}}
 
 ### Academic field for education and professional development
 
@@ -40,16 +40,16 @@ despite lot of overlapping in the categories.
 
 {{t_academic_field_edu}}
 
-{{f_academic_field_edu}}
+{{{f_academic_field_edu}}}
 
-{{f_academic_field_edu_wordcloud}}
+{{{f_academic_field_edu_wordcloud}}}
 
 
 ### Academic field of work
 
 {{t_academic_field_work}}
 
-{{f_academic_field_work}}
+{{{f_academic_field_work}}}
 
 
 ## Professional developer
@@ -69,13 +69,13 @@ Questions in this section:
 
 {{t_proportion-professional-developer}}
 
-{{f_proportion-professional-developer}}
+{{{f_proportion-professional-developer}}}
 
 ### Years of software development experience
 
 {{t_summary-years-professional-developer}}
 
-{{f_density-years-professional-developer}}
+{{{f_density-years-professional-developer}}}
 
 
 ## How time is spent
@@ -120,7 +120,7 @@ All questions were asked on a 1 to 10 Likert scale.
 * On average, how much of your time is spent on teaching?
 * On average, how much of your time is spent on other activities?
 
-{{f_how-time-is-spent}}
+{{{f_how-time-is-spent}}}
 
 
 ## Previous employment
@@ -151,13 +151,13 @@ position among 8 different ones:
 
 {{t_where-previous-job-based}}
 
-{{f_where-previous-job-based}}
+{{{f_where-previous-job-based}}}
 
 ### What were the reasons to choose the current job
 
 {{t_reasons-to-choose-current-job}}
 
-{{f_reasons-to-choose-current-job}}
+{{{f_reasons-to-choose-current-job}}}
 
 
 ## Collaboration and training
@@ -180,37 +180,37 @@ Questions in this section:
 
 {{t_developing-code-for-others}}
 
-{{f_developing-code-for-others}}
+{{{f_developing-code-for-others}}}
 
 ### Working with same researchers
 
 {{t_working-with-same-researchers}}
 
-{{f_working-with-same-researchers}}
+{{{f_working-with-same-researchers}}}
 
 ### Part of dedicated group
 
 {{t_member-of-a-dedicated-group}}
 
-{{f_member-of-a-dedicated-group}}
+{{{f_member-of-a-dedicated-group}}}
 
 ### Number of projects
 
 {{t_number-of-software-projects}}
 
-{{f_number-of-software-projects}}
+{{{f_number-of-software-projects}}}
 
 {{t_number-of-software-developers-per-projects}}
 
-{{f_number-of-software-developers-per-projects}}
+{{{f_number-of-software-developers-per-projects}}}
 
 ### Training
 
 {{t_training-frequency}}
 
-{{f_training-frequency}}
+{{{f_training-frequency}}}
 
-{{f_training-name-wordcloud}}
+{{{f_training-name-wordcloud}}}
 
 ## Publications and citations
 
@@ -236,17 +236,17 @@ Questions in the section:
 
 {{t_acknowledgment-in-paper}}
 
-{{f_acknowledgment-in-paper}}
+{{{f_acknowledgment-in-paper}}}
 
 ### Participation in conferences
 
 {{t_did-you-participate-in-conference}}
 
-{{f_did-you-participate-in-conference}}
+{{{f_did-you-participate-in-conference}}}
 
 ### Conference name
 
-{{f_conference-name-wordcloud}}
+{{{f_conference-name-wordcloud}}}
 
 
 ## Open source and DOI
@@ -277,29 +277,29 @@ Questions in this section:
 
 {{t_open-source-use}}
 
-{{f_open-source-use}}
+{{{f_open-source-use}}}
 
 ### Referencing software
 
 {{t_citation-of-software}}
 
-{{f_citation-of-software}}
+{{{f_citation-of-software}}}
 
 ### Use of Digital Object Identifier (DOI)
 
 {{t_use-of-digital-object-identifier}}
 
-{{f_use-of-digital-object-identifier}}
+{{{f_use-of-digital-object-identifier}}}
 
 ### Tools used for DOI
 
-{{f_tool-used-for-doi-wordcloud}}
+{{{f_tool-used-for-doi-wordcloud}}}
 
 ### ORCID
 
 {{t_using-orcid}}
 
-{{f_using-orcid}}
+{{{f_using-orcid}}}
 
 
 ## Good practices
@@ -359,29 +359,29 @@ using for their most important project.
 
 {{t_bus-factor}}
 
-{{f_bus-factor}}
+{{{f_bus-factor}}}
 
 ### Presence of transition plan
 
 {{t_presence-of-transition-plan}}
 
-{{f_presence-of-transition-plan}}
+{{{f_presence-of-transition-plan}}}
 
 ### Use of version control
 
 {{t_use-of-version-control}}
 
-{{f_use-of-version-control}}
+{{{f_use-of-version-control}}}
 
 ### Testing strategies
 
 {{t_testing-strategies}}
 
-{{f_testing-strategies}}
+{{{f_testing-strategies}}}
 
 ### Repository
 
-{{f_repository-wordcloud}}
+{{{f_repository-wordcloud}}}
 
 
 ## Tools and programming languages
@@ -400,13 +400,13 @@ Questions in this section:
 
 {{t_programming-languages}}
 
-{{f_programming-languages}}
+{{{f_programming-languages}}}
 
 ### Operating systems
 
 {{t_operating-systems}}
 
-{{f_operating-systems}}
+{{{f_operating-systems}}}
 
 
 ## Job satisfaction
@@ -480,25 +480,25 @@ All questions were asked in a Likert scale.
 
 ### General satisfaction
 
-{{f_general-satisfaction}}
+{{{f_general-satisfaction}}}
 
 ### Recognition
 
-{{f_recognition}}
+{{{f_recognition}}}
 
 ### Turn-over intention
 
-{{f_consider-leaving-job}}
+{{{f_consider-leaving-job}}}
 
-{{f_would-accept-another-job-at-same-compensation}}
+{{{f_would-accept-another-job-at-same-compensation}}}
 
 ### Perceived employability
 
-{{f_perceived-employability}}
+{{{f_perceived-employability}}}
 
 ### Progression in the current role
 
-{{f_progression-in-the-current-role}}
+{{{f_progression-in-the-current-role}}}
 
 ## Research software engineer
 
@@ -527,30 +527,30 @@ and to acquire for their current role.
 
 {{t_rse-member}}
 
-{{f_rse-member}}
+{{{f_rse-member}}}
 
 ### Joining a RSE/RSD association
 
 {{t_joining-a-rse-rsd-association}}
 
-{{f_joining-a-rse-rsd-association}}
+{{{f_joining-a-rse-rsd-association}}}
 
 ### What is important for such an organisation
 
 {{t_what-is-important-for-such-an-organisation}}
 
-{{f_what-is-important-for-such-an-organisation}}
+{{{f_what-is-important-for-such-an-organisation}}}
 
 ### Attending a national conference of RSE/RSD
 
 {{t_attending-a-national-conference-of-rse-rsd}}
 
-{{f_attending-a-national-conference-of-rse-rsd}}
+{{{f_attending-a-national-conference-of-rse-rsd}}}
 
 ### Learning skills for RSE/RSD
 
-{{f_learning-skills-rse-rsd-wordcloud}}
+{{{f_learning-skills-rse-rsd-wordcloud}}}
 
 ### Which skills to improve
 
-{{f_which-skills-to-improve-rse-rsd-wordcloud}}
+{{{f_which-skills-to-improve-rse-rsd-wordcloud}}}

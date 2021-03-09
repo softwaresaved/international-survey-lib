@@ -66,29 +66,29 @@ using for their most important project.
 
 {{t_bus-factor}}
 
-{{f_bus-factor}}
+{{{f_bus-factor}}}
 
 ### Presence of transition plan
 
 {{t_presence-of-transition-plan}}
 
-{{f_presence-of-transition-plan}}
+{{{f_presence-of-transition-plan}}}
 
 ### Use of version control
 
 {{t_use-of-version-control}}
 
-{{f_use-of-version-control}}
+{{{f_use-of-version-control}}}
 
 ### Testing strategies
 
 {{t_testing-strategies}}
 
-{{f_testing-strategies}}
+{{{f_testing-strategies}}}
 
 ### Repository
 
-{{f_repository-wordcloud}}
+{{{f_repository-wordcloud}}}
 
 
 

@@ -37,28 +37,28 @@ Questions in this section:
 
 {{t_open-source-use}}
 
-{{f_open-source-use}}
+{{{f_open-source-use}}}
 
 ### Referencing software
 
 {{t_citation-of-software}}
 
-{{f_citation-of-software}}
+{{{f_citation-of-software}}}
 
 ### Use of Digital Object Identifier (DOI)
 
 {{t_use-of-digital-object-identifier}}
 
-{{f_use-of-digital-object-identifier}}
+{{{f_use-of-digital-object-identifier}}}
 
 ### Tools used for DOI
 
-{{f_tool-used-for-doi-wordcloud}}
+{{{f_tool-used-for-doi-wordcloud}}}
 
 ### ORCID
 
 {{t_using-orcid}}
 
-{{f_using-orcid}}
+{{{f_using-orcid}}}
 
 {{/countries}}

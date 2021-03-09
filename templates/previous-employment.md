@@ -38,12 +38,12 @@ position among 8 different ones:
 
 {{t_where-previous-job-based}}
 
-{{f_where-previous-job-based}}
+{{{f_where-previous-job-based}}}
 
 ### What were the reasons to choose the current job
 
 {{t_reasons-to-choose-current-job}}
 
-{{f_reasons-to-choose-current-job}}
+{{{f_reasons-to-choose-current-job}}}
 
 {{/countries}}

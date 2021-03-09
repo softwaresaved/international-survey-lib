@@ -37,32 +37,32 @@ and to acquire for their current role.
 
 {{t_rse-member}}
 
-{{f_rse-member}}
+{{{f_rse-member}}}
 
 ### Joining a RSE/RSD association
 
 {{t_joining-a-rse-rsd-association}}
 
-{{f_joining-a-rse-rsd-association}}
+{{{f_joining-a-rse-rsd-association}}}
 
 ### What is important for such an organisation
 
 {{t_what-is-important-for-such-an-organisation}}
 
-{{f_what-is-important-for-such-an-organisation}}
+{{{f_what-is-important-for-such-an-organisation}}}
 
 ### Attending a national conference of RSE/RSD
 
 {{t_attending-a-national-conference-of-rse-rsd}}
 
-{{f_attending-a-national-conference-of-rse-rsd}}
+{{{f_attending-a-national-conference-of-rse-rsd}}}
 
 ### Learning skills for RSE/RSD
 
-{{f_learning-skills-rse-rsd-wordcloud}}
+{{{f_learning-skills-rse-rsd-wordcloud}}}
 
 ### Which skills to improve
 
-{{f_which-skills-to-improve-rse-rsd-wordcloud}}
+{{{f_which-skills-to-improve-rse-rsd-wordcloud}}}
 
 {{/countries}}

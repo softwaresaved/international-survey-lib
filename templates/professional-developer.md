@@ -27,12 +27,12 @@ Questions in this section:
 
 {{t_proportion-professional-developer}}
 
-{{f_proportion-professional-developer}}
+{{{f_proportion-professional-developer}}}
 
 ### Years of software development experience
 
 {{t_summary-years-professional-developer}}
 
-{{f_density-years-professional-developer}}
+{{{f_density-years-professional-developer}}}
 
 {{/countries}}
