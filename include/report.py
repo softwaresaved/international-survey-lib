@@ -95,7 +95,7 @@ def table(name, data, index=True):
     return {
         "t_"
         + name: data.to_markdown(index=index)
-        + "\n\n[Download CSV](%s)" % (BASEURL + csv)
+        + "\n\n[Download CSV](%s){: .button}" % (BASEURL + csv)
     }
 
 
@@ -105,7 +105,7 @@ def table_country(country, name, data, index=True):
     return {
         "t_"
         + name: data.to_markdown(index=index)
-        + "\n\n[Download CSV](%s)" % (BASEURL + csv)
+        + "\n\n[Download CSV](%s){: .button}" % (BASEURL + csv)
     }
 
 
