@@ -35,11 +35,11 @@ We can see the distribution of participants among the countries as follow:
 
 ## Visual representation of countries repartition   
 
-{{f_participant}}
+{{{f_participant}}}
 
 ## Date of participation
 
-{{f_participation_date}}
+{{{f_participation_date}}}
 
 ## Difference with the previous year
 
@@ -47,7 +47,7 @@ Several countries did the survey last year, here a summary of the difference in 
 
 {{t_difference_with_previous_year}}
 
-{{f_difference_with_previous_year}}
+{{{f_difference_with_previous_year}}}
 
 ## Subsetting
 
