@@ -20,6 +20,7 @@ COUNTRIES_WITH_WORLD = COUNTRIES + ["World"]
 REPORT_PATH = "_section"
 BASEURL = "/international-survey-analysis/"
 REQUIRED_PATHS = ["csv", "fig", REPORT_PATH]
+FIGURE_TYPE = os.environ.get("RSE_SURVEY_FIGURE_TYPE", "svg")
 
 
 def slugify(x):
@@ -109,18 +110,24 @@ def table_country(country, name, data, index=True):
 
 
 def figure(name, plt):
-    figpath = "fig/%s.png" % name
-    plt.savefig(figpath, dpi=os.environ.get('RSE_SURVEY_FIGURE_DPI', 150))
+    plt.rcParams['svg.fonttype'] = 'none'
+    plt.rcParams['font.family'] = 'sans-serif'
+    plt.rcParams['font.sans-serif'] = ['Roboto', 'sans-serif']
+    figpath = f"fig/{name}.{FIGURE_TYPE}"
+    plt.savefig(figpath, dpi=os.environ.get('RSE_SURVEY_FIGURE_DPI', 300))
     plt.close('all')
-    return {"f_" + name: "![%s](%s)" % (name, BASEURL + figpath)}
+    return {f"f_{name}": f"![{name}]({BASEURL}{figpath})"}
 
 
 def figure_country(country, name, plt):
+    plt.rcParams['svg.fonttype'] = 'none'
+    plt.rcParams['font.family'] = 'inherit'
+    plt.rcParams['font.sans-serif'] = ['Roboto', 'sans-serif']
     slug = slugify(country)
-    figpath = "fig/%s_%s.png" % (name, slug)
-    plt.savefig(figpath, dpi=300)
+    figpath = f"fig/{name}_{slug}.{FIGURE_TYPE}"
+    plt.savefig(figpath, dpi=os.environ.get('RSE_SURVEY_FIGURE_DPI', 300))
     plt.close('all')
-    return {"f_" + name: "![%s](%s)" % (name + "_" + slug, BASEURL + figpath)}
+    return {f"f_{name}": f"![{name}_{slug}]({BASEURL}{figpath})"}
 
 
 def first_existing(paths):
