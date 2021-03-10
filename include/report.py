@@ -110,6 +110,8 @@ def table_country(country, name, data, index=True):
 
 
 def svg_tag_text(file):
+    if not os.path.exists(file):
+        return ""
     with open(file) as f:
         svg_start_token = False
         lines = []
@@ -143,7 +145,11 @@ def figure_country(country, name, plt):
     figpath = f"fig/{name}_{slug}.{FIGURE_TYPE}"
     plt.savefig(figpath, dpi=os.environ.get('RSE_SURVEY_FIGURE_DPI', 300))
     plt.close('all')
-    return {f"f_{name}": f"![{name}_{slug}]({BASEURL}{figpath})"}
+    if FIGURE_TYPE == "svg":
+        # Embed svg to allow font-family use from CSS
+        return {f"f_{name}": f"{{% raw %}}\n{svg_tag_text(figpath)}\n{{% endraw %}}"}
+    else:
+        return {f"f_{name}": f"![{name}_{slug}]({BASEURL}{figpath})"}
 
 
 def first_existing(paths):
