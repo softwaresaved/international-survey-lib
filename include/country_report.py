@@ -1,11 +1,14 @@
 # Country report
+import os
 import collections
 import pandas as pd
 from pathlib import Path
 import chevron
 
 import sys
-from report import COUNTRIES_WITH_WORLD, BASEURL, slugify
+from report import COUNTRIES_WITH_WORLD, BASEURL, slugify, svg_tag_text
+
+FIGURE_TYPE = os.environ.get("RSE_SURVEY_FIGURE_TYPE", "svg")
 
 
 def read_template(template):
@@ -14,7 +17,13 @@ def read_template(template):
         for line in fp:
             if not line.startswith("{{"):
                 continue
-            slug = line.strip().replace("{{", "").replace("}}", "")
+            slug = (
+                line.strip()
+                .replace("{{{", "")
+                .replace("}}}", "")
+                .replace("{{", "")
+                .replace("}}", "")
+            )
             data[slug[0]].append(slug[2:])
     return data
 
@@ -22,23 +31,37 @@ def read_template(template):
 def table_markup(path):
     if not Path(path).exists():
         return ""
-    return pd.read_csv(path).to_markdown(index=False) + f"\n\n[Download CSV]({BASEURL}{path})"
+    return (
+        pd.read_csv(path).to_markdown(index=False)
+        + f"\n\n[Download CSV]({BASEURL}{path}){{: .button}}"
+    )
 
 
 def template_data(country):
     data = {"country": country}
     country_slug = slugify(country)
     template = read_template("../templates/country-report.md")
-    data.update({
-        f"t_{key}": table_markup(f"csv/{key}_{country_slug}.csv")
-        for key in template["t"]
-    })
     data.update(
         {
-            f"f_{key}": f"![{key}]({BASEURL}fig/{key}_{country_slug}.png)"
-            for key in template["f"]
+            f"t_{key}": table_markup(f"csv/{key}_{country_slug}.csv")
+            for key in template["t"]
         }
     )
+    if FIGURE_TYPE == "svg":
+        figure_data = [(key, f"fig/{key}_{country_slug}.svg") for key in template["f"]]
+        data.update(
+            {
+                f"f_{key}": f"{{% raw %}}\n{svg_tag_text(value)}\n{{% endraw %}}"
+                for key, value in figure_data
+            }
+        )
+    else:
+        data.update(
+            {
+                f"f_{key}": f"![{key}]({BASEURL}fig/{key}_{country_slug}.png)"
+                for key in template["f"]
+            }
+        )
     return data
 
 
