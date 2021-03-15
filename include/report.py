@@ -126,6 +126,7 @@ def svg_tag_text(file):
 def figure(name, plt):
     plt.rcParams['svg.fonttype'] = 'none'
     plt.rcParams['font.family'] = 'sans-serif'
+    plt.rcParams['svg.hashsalt'] = 'softwaresaved/international-survey-analysis'
     plt.rcParams['font.sans-serif'] = ['Roboto', 'sans-serif']
     figpath = f"fig/{name}.{FIGURE_TYPE}"
     plt.savefig(figpath, dpi=os.environ.get('RSE_SURVEY_FIGURE_DPI', 300))
@@ -140,6 +141,7 @@ def figure(name, plt):
 def figure_country(country, name, plt):
     plt.rcParams['svg.fonttype'] = 'none'
     plt.rcParams['font.family'] = 'sans-serif'
+    plt.rcParams['svg.hashsalt'] = 'softwaresaved/international-survey-analysis'
     plt.rcParams['font.sans-serif'] = ['Roboto', 'sans-serif']
     slug = slugify(country)
     figpath = f"fig/{name}_{slug}.{FIGURE_TYPE}"
