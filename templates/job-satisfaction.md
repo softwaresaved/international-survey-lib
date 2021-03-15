@@ -26,8 +26,8 @@ one attitude.
 
 Beside these specific concepts we asked more general question about their
 satisfaction in their current position and their satisfaction with their career
-in general with a range of answers from 0 - Not at all satisfied to 10
-- Completely satisfied.
+in general with a range of answers from 0 (not at all satisfied) to 10
+(completely satisfied).
 
 The specific questions about their job satisfaction reflect, in general, the
 same opinion as the two more generic questions. However, the granularity helps
