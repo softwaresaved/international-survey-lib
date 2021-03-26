@@ -63,14 +63,14 @@ def make_report(file):
                 year = int(year)
             filename = base + ".md"
             template = first_existing(
-                [Path("templates") / filename, Path("../templates") / filename]
+                [Path("templates") / filename, Path("../lib/templates") / filename]
             )
             if template is None:
                 print("E: No template found for:", base)
                 print("   Put a corresponding template in the appropriate folder")
                 print("   For this year, in a 'template' subfolder of this folder")
                 print(
-                    "   For all years, in a 'template' subfolder of the parent folder"
+                    "   For all years, templates folder in softwaresaved/international-survey-lib"
                 )
                 sys.exit(1)
 
