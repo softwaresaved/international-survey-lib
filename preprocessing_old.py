@@ -12,7 +12,7 @@ from collections import OrderedDict
 import pycountry
 
 
-from include.config import CleaningConfig
+from .config import CleaningConfig
 
 
 class CleaningData(CleaningConfig):

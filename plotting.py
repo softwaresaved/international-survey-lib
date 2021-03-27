@@ -6,7 +6,7 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 
-from include.likertScalePlot import likert_scale, get_colors
+from .likertScalePlot import likert_scale, get_colors
 
 
 def plot_numeric_var(df):

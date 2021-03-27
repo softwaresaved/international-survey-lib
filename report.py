@@ -5,20 +5,11 @@ import datetime
 import pandas as pd
 from pathlib import Path
 
-# List of all countries of interest
-COUNTRIES = [
-    "Australia",
-    "Germany",
-    "Netherlands",
-    "New Zealand",
-    "South Africa",
-    "United Kingdom",
-    "United States",
-]
+COUNTRIES = (Path(__file__).parent.parent / "COUNTRIES").read_text().split("\n")
 COUNTRIES_WITH_WORLD = COUNTRIES + ["World"]
 
 REPORT_PATH = "_section"
-BASEURL = "/international-survey-analysis/"
+BASEURL = os.environ.get("RSE_SURVEY_BASEURL", Path(__file__).parent.parent.stem)
 REQUIRED_PATHS = ["csv", "fig", REPORT_PATH]
 FIGURE_TYPE = os.environ.get("RSE_SURVEY_FIGURE_TYPE", "svg")
 
@@ -63,7 +54,7 @@ def make_report(file):
                 year = int(year)
             filename = base + ".md"
             template = first_existing(
-                [Path("templates") / filename, Path("../lib/templates") / filename]
+                [Path("templates") / filename, Path("lib/templates") / filename]
             )
             if template is None:
                 print("E: No template found for:", base)

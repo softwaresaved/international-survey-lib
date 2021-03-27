@@ -24,7 +24,7 @@ import numpy as np
 # When using within jupyter
 # get_ipython().magic('matplotlib inline')  # Activat that line to use in Jupyter
 
-from common_plot import wrap_labels
+from .common_plot import wrap_labels
 import matplotlib.pyplot as plt
 #  When using this script with ipython and vim
 plt.ion()

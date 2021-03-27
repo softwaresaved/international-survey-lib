@@ -8,10 +8,10 @@ the researchers computer as (s)he is the only one to have access to the raw data
 """
 import sys
 import pandas as pd
-from include.preprocessing import CleaningData
-from include.preprocessing_old import CleaningData as CleaningData_old
-from include.config import CleaningConfig
-from include.get_arguments import get_arguments
+from .preprocessing import CleaningData
+from .preprocessing_old import CleaningData as CleaningData_old
+from .config import CleaningConfig
+from .get_arguments import get_arguments
 
 
 def main():

@@ -10,7 +10,7 @@ import numpy as np
 from collections import OrderedDict
 
 try:
-    from include.config import CleaningConfig
+    from .config import CleaningConfig
 except ModuleNotFoundError:
     from config import CleaningConfig
 

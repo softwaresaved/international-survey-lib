@@ -5,10 +5,10 @@ import numpy as np
 import matplotlib
 import matplotlib.pyplot as plt
 import seaborn as sns
-from common_plot import wrap_labels
-from likertScalePlot import likert_scale
-from textCleaning import plot_wordcloud as _plot_wordcloud
-from textCleaning import wrap_clean_text
+from .common_plot import wrap_labels
+from .likertScalePlot import likert_scale
+from .textCleaning import plot_wordcloud as _plot_wordcloud
+from .textCleaning import wrap_clean_text
 
 
 def get_previous_survey_year(year):

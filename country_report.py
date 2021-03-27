@@ -6,7 +6,7 @@ from pathlib import Path
 import chevron
 
 import sys
-from report import COUNTRIES_WITH_WORLD, BASEURL, slugify, svg_tag_text
+from .report import COUNTRIES_WITH_WORLD, BASEURL, slugify, svg_tag_text
 
 FIGURE_TYPE = os.environ.get("RSE_SURVEY_FIGURE_TYPE", "svg")
 

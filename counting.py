@@ -6,10 +6,10 @@ import errno
 import pandas as pd
 import numpy as np
 
-from include.likertScalePlot import compute_percentage
-from include.textCleaning import wordcloud
+from .likertScalePlot import compute_percentage
+from .textCleaning import wordcloud
 
-from include.transforming_title import corresponding_title
+from .transforming_title import corresponding_title
 
 import itertools as it
 
