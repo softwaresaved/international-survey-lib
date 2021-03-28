@@ -5,6 +5,7 @@ import numpy as np
 import matplotlib
 import matplotlib.pyplot as plt
 import seaborn as sns
+from pathlib import Path
 from .common_plot import wrap_labels
 from .likertScalePlot import likert_scale
 from .textCleaning import plot_wordcloud as _plot_wordcloud
@@ -13,9 +14,14 @@ from .textCleaning import wrap_clean_text
 
 def get_previous_survey_year(year):
     """Gets previous survey year from the environment variable
-    RSE_SURVEY_YEAR_PREV. If the environment variable is set,
-    returns year - 1"""
-    return int(os.environ.get("RSE_SURVEY_YEAR_PREV", year - 1))
+    RSE_SURVEY_YEAR_PREV.
+    If the environment variable is not set, try reading from
+    the YEAR_PREV file in the repository.
+    If that fails, return year - 1"""
+    if "RSE_SURVEY_YEAR_PREV" in os.environ:
+        return int(os.environ["RSE_SURVEY_YEAR_PREV"])
+    year_prev = Path(__file__).parent.parent / "YEAR_PREV"
+    return int(year_prev.read_text()) if year_prev.exists() else (year - 1)
 
 
 def get_sampled_df(df, columns):
