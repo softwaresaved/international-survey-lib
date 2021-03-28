@@ -9,7 +9,7 @@ COUNTRIES = (Path(__file__).parent.parent / "COUNTRIES").read_text().split("\n")
 COUNTRIES_WITH_WORLD = COUNTRIES + ["World"]
 
 REPORT_PATH = "_section"
-BASEURL = os.environ.get("RSE_SURVEY_BASEURL", Path(__file__).parent.parent.stem)
+BASEURL = os.environ.get("RSE_SURVEY_BASEURL", Path(__file__).parent.parent.stem + "/")
 REQUIRED_PATHS = ["csv", "fig", REPORT_PATH]
 FIGURE_TYPE = os.environ.get("RSE_SURVEY_FIGURE_TYPE", "svg")
 
