@@ -1,4 +1,4 @@
-# Country report
+
 import os
 import collections
 import pandas as pd
@@ -6,7 +6,7 @@ from pathlib import Path
 import chevron
 
 import sys
-from .report import COUNTRIES_WITH_WORLD, BASEURL, slugify, svg_tag_text
+from lib.report import COUNTRIES_WITH_WORLD, BASEURL, slugify, svg_tag_text
 
 FIGURE_TYPE = os.environ.get("RSE_SURVEY_FIGURE_TYPE", "svg")
 
@@ -40,7 +40,7 @@ def table_markup(path):
 def template_data(country):
     data = {"country": country}
     country_slug = slugify(country)
-    template = read_template("../templates/country-report.md")
+    template = read_template("lib/templates/country-report.md")
     data.update(
         {
             f"t_{key}": table_markup(f"csv/{key}_{country_slug}.csv")
@@ -66,7 +66,7 @@ def template_data(country):
 
 
 def run():
-    template = Path("../templates/country-report.md")
+    template = Path("lib") / "templates" / "country-report.md"
     folder = Path("_country")
     if not folder.exists():
         folder.mkdir()
