@@ -11,7 +11,8 @@ COUNTRIES_WITH_WORLD = COUNTRIES + ["World"]
 REPORT_PATH = "_section"
 BASEURL = os.environ.get("RSE_SURVEY_BASEURL", Path(__file__).parent.parent.stem + "/")
 REQUIRED_PATHS = ["csv", "fig", REPORT_PATH]
-FIGURE_TYPE = os.environ.get("RSE_SURVEY_FIGURE_TYPE", "svg")
+FIGURE_TYPE = set(os.environ.get("RSE_SURVEY_FIGURE_TYPE", "png").lower().split(","))
+FIGURE_TYPE.add("svg")
 
 
 def slugify(x):
@@ -114,35 +115,27 @@ def svg_tag_text(file):
     return "".join(lines)
 
 
-def figure(name, plt):
+def figure(name, plt, country=None):
     plt.rcParams['svg.fonttype'] = 'none'
     plt.rcParams['font.family'] = 'sans-serif'
     plt.rcParams['svg.hashsalt'] = 'softwaresaved/international-survey-analysis'
     plt.rcParams['font.sans-serif'] = ['Roboto', 'sans-serif']
-    figpath = f"fig/{name}.{FIGURE_TYPE}"
-    plt.savefig(figpath, dpi=os.environ.get('RSE_SURVEY_FIGURE_DPI', 300))
-    plt.close('all')
-    if FIGURE_TYPE == "svg":
-        # Embed svg to allow font-family use from CSS
-        return {f"f_{name}": f"{{% raw %}}\n{svg_tag_text(figpath)}\n{{% endraw %}}"}
-    else:
-        return {f"f_{name}": f"![{name}]({BASEURL}{figpath})"}
+    image_links = {}
+    slug = f"{name}_{slugify(country)}" if country else name
+    for figure_type in FIGURE_TYPE:
+        figpath = f"fig/{slug}.{figure_type}"
+        plt.savefig(figpath, dpi=os.environ.get('RSE_SURVEY_FIGURE_DPI', 300))
+        plt.close('all')
+        if figure_type == "svg":
+            embedded_image = f"{{% raw %}}\n{svg_tag_text(figpath)}\n{{% endraw %}}"
+        image_links[figure_type] = f"{BASEURL}{figpath}"
+    return {f"f_{name}": embedded_image + "\n\n" +
+            " ".join(f"[{figure_type.upper()}]({figpath}){{: .button}}"  # image links
+                     for figure_type, figpath in image_links.items()) + "\n"}
 
 
 def figure_country(country, name, plt):
-    plt.rcParams['svg.fonttype'] = 'none'
-    plt.rcParams['font.family'] = 'sans-serif'
-    plt.rcParams['svg.hashsalt'] = 'softwaresaved/international-survey-analysis'
-    plt.rcParams['font.sans-serif'] = ['Roboto', 'sans-serif']
-    slug = slugify(country)
-    figpath = f"fig/{name}_{slug}.{FIGURE_TYPE}"
-    plt.savefig(figpath, dpi=os.environ.get('RSE_SURVEY_FIGURE_DPI', 300))
-    plt.close('all')
-    if FIGURE_TYPE == "svg":
-        # Embed svg to allow font-family use from CSS
-        return {f"f_{name}": f"{{% raw %}}\n{svg_tag_text(figpath)}\n{{% endraw %}}"}
-    else:
-        return {f"f_{name}": f"![{name}_{slug}]({BASEURL}{figpath})"}
+    return figure(name, plt, country)
 
 
 def first_existing(paths):
