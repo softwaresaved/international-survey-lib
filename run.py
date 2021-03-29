@@ -31,6 +31,9 @@ def create_runner(init_modules: List[str], survey_root: str = "survey"):
                 print("  " + " ".join(modules_not_found))
                 sys.exit(1)
         for m in run_modules:
-            importlib.import_module(m).run()
-            print(m, "✓")
+            try:
+                importlib.import_module(m).run()
+                print(m, "✓")
+            except Exception:
+                print(m, "✗")
     return run
