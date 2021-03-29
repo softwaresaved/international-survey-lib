@@ -5,7 +5,9 @@ import datetime
 import pandas as pd
 from pathlib import Path
 
-COUNTRIES = (Path(__file__).parent.parent / "COUNTRIES").read_text().split("\n")
+COUNTRIES = [c for c in
+             (Path(__file__).parent.parent / "COUNTRIES").read_text().split("\n")
+             if c]
 COUNTRIES_WITH_WORLD = COUNTRIES + ["World"]
 
 REPORT_PATH = "_section"
