@@ -129,10 +129,10 @@ def figure(name, plt, country=None):
     for figure_type in FIGURE_TYPE:
         figpath = f"fig/{slug}.{figure_type}"
         plt.savefig(figpath, dpi=FIGURE_DPI)
-        plt.close('all')
         if figure_type == "svg":
             embedded_image = f"{{% raw %}}\n{svg_tag_text(figpath)}\n{{% endraw %}}"
         image_links[figure_type] = f"{BASEURL}{figpath}"
+    plt.close('all')
     return {f"f_{name}": embedded_image + "\n\n" +
             " ".join(f"[{figure_type.upper()}]({figpath}){{: .button}}"  # image links
                      for figure_type, figpath in image_links.items()) + "\n"}
