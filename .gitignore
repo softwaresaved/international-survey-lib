@@ -1,0 +1,7 @@
+*.ipynb
+*.pyc
+__pycache__
+tags
+tags.*
+*.swp
+*.egg-info
