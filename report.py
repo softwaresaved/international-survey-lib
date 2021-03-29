@@ -11,7 +11,7 @@ COUNTRIES = [c for c in
 COUNTRIES_WITH_WORLD = COUNTRIES + ["World"]
 
 REPORT_PATH = "_section"
-BASEURL = os.environ.get("RSE_SURVEY_BASEURL", Path(__file__).parent.parent.stem + "/")
+BASEURL = os.environ.get("RSE_SURVEY_BASEURL", "/" + Path(__file__).parent.parent.stem + "/")
 REQUIRED_PATHS = ["csv", "fig", REPORT_PATH]
 FIGURE_TYPE = set(os.environ.get("RSE_SURVEY_FIGURE_TYPE", "png").lower().split(","))
 FIGURE_TYPE.add("svg")
@@ -124,6 +124,7 @@ def figure(name, plt, country=None):
     plt.rcParams['font.sans-serif'] = ['Roboto', 'sans-serif']
     image_links = {}
     slug = f"{name}_{slugify(country)}" if country else name
+    embedded_image = ""
     for figure_type in FIGURE_TYPE:
         figpath = f"fig/{slug}.{figure_type}"
         plt.savefig(figpath, dpi=os.environ.get('RSE_SURVEY_FIGURE_DPI', 300))
