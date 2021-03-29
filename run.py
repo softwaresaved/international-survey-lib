@@ -30,10 +30,12 @@ def create_runner(init_modules: List[str], survey_root: str = "survey"):
                 print("Error: these modules were not found, aborting.")
                 print("  " + " ".join(modules_not_found))
                 sys.exit(1)
-        for m in run_modules:
+        N = len(run_modules)
+        for i, m in enumerate(run_modules):
+            progress = f"[{i + 1}/{N}]"
             try:
                 importlib.import_module(m).run()
-                print(m, "✓")
+                print(progress, m, "✓")
             except Exception:
-                print(m, "✗")
+                print(progress, m, "✗")
     return run
