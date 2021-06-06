@@ -121,7 +121,7 @@ def svg_tag_text(file):
 def figure(name, plt, country=None):
     plt.rcParams['svg.fonttype'] = 'none'
     plt.rcParams['svg.hashsalt'] = 'softwaresaved/international-survey-analysis'
-    plt.rcParams['font.sans-serif'] = 'Roboto'
+    plt.rcParams['font.sans-serif'] = 'Helvetica,Arial'
     plt.rcParams['font.family'] = 'sans-serif'
     image_links = {}
     slug = f"{name}_{slugify(country)}" if country else name
