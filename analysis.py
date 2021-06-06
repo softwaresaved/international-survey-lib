@@ -541,25 +541,19 @@ def plot_density_func(df, columns, category, country, survey_year, remove_outlie
         x="Year", y="Value", data=df, ax=axarr[0], color="grey", alpha=0.75
     )  # .set_title('{}: {}'.format(category, country))
 
-    if len(df[df["Year"] == survey_year_prev]) > 0:
-        sns.distplot(
-            df[df["Year"] == survey_year_prev]["Value"].dropna(),
-            bins=int(len(df[df["Year"] == survey_year_prev]) / 2),
-            label=str(survey_year_prev),
-            ax=axarr[1],
-        )
-
-    sns.distplot(
-        df[df["Year"] == survey_year]["Value"].dropna(),
-        bins=int(len(df[df["Year"] == survey_year]) / 2),
-        label=str(survey_year),
+    sns.histplot(
+        df.dropna(),
+        x="Value",
         ax=axarr[1],
+        hue="Year",
+        multiple="dodge",
+        legend=True,
+        kde=True
     )
 
     sns.despine(offset=10, trim=True)
     title = f"{category} for {country}" + (" (without 95 percentile)" if remove_outliers else "")
     fig.suptitle(title)
-    plt.legend()
 
 
 def plot_cat_comparison(df, country, category, order_index=False, width=6.4):
