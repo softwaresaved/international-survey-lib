@@ -520,7 +520,7 @@ def plot_density_func(df, columns, category, country, survey_year, remove_outlie
     df_sampled.columns = ["Country", "Year", "Value"]
     df = df_sampled[df_sampled.Country == country]
     # Remove na
-    df.dropna(inplace=True)
+    df = df.dropna(inplace=False)
     # Remove the outliers
     if remove_outliers:
         df_survey_year = df[df.Year == survey_year]
@@ -542,7 +542,7 @@ def plot_density_func(df, columns, category, country, survey_year, remove_outlie
     )  # .set_title('{}: {}'.format(category, country))
 
     sns.histplot(
-        df.dropna(),
+        df,
         x="Value",
         ax=axarr[1],
         hue="Year",
