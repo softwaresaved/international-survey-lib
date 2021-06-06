@@ -2,6 +2,7 @@ import os
 import re
 import sys
 import importlib
+import traceback
 from typing import List
 
 yeare = re.compile(r".*-(\d\d\d\d)")
@@ -35,7 +36,9 @@ def create_runner(init_modules: List[str], survey_root: str = "survey"):
             progress = f"[{i + 1}/{N}]"
             try:
                 importlib.import_module(m).run()
-                print(progress, m, "✓")
-            except Exception:
-                print(progress, m, "✗")
+                print(progress, m, "DONE")
+            except Exception as e:
+                print(progress, m, "FAIL")
+                traceback.print_exc()
+
     return run
