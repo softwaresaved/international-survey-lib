@@ -566,6 +566,7 @@ def plot_cat_comparison(df, country, category, order_index=False, width=6.4):
             df = df.reindex(order_index)
         else:
             df = df.sort_index()
+    df =  df[::-1]
     ind = np.arange(len(df.index))
     height = (len(df.index) / 3 + 1) if len(df.index) > 2 else 1.25
 
