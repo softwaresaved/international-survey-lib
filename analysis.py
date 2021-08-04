@@ -1,4 +1,5 @@
 import os
+import re
 import math
 import pandas as pd
 import numpy as np
@@ -123,8 +124,14 @@ def count_multi_choice(df, category, dropna=True):
     # that answered at least one category (rather than by total answer for all categories)
     df_final["Percentage"] = (df_final["Count"] / total_answered) * 100
 
+    def _ethnicity(s):  # ethnicity category special case
+        return re.sub(r'.*\[(.*)\]', r'\1', s)
+
     # Get the category information between Bracket
-    df_final[category] = df_final[category].str.replace("]", "", regex=False).str.split("[").str[1]
+    if category == 'Ethnicity':
+        df_final[category] = df_final[category].apply(_ethnicity)
+    else:
+        df_final[category] = df_final[category].str.replace("]", "", regex=False).str.split("[").str[1]
 
     # Reorder the df
     df_final = df_final.sort_values("Percentage", ascending=False)
