@@ -212,7 +212,7 @@ def count_diff(
         df_to_use[columns].astype("category")
     except NotImplementedError:
         pass
-    if country == "all":
+    if country in ["all", "World"]:
         df_country_survey_year = df_to_use[(df_to_use["Year"] == survey_year)]
     else:
         df_country_survey_year = df_to_use[
@@ -230,7 +230,7 @@ def count_diff(
 
     # Get the count for the previous year if it exists
     if not disable_past_year:
-        if country == "all":
+        if country in ["all", "World"]:
             df_country_survey_year_prev = df_to_use[(df_to_use["Year"] == survey_year_prev)]
         else:
             df_country_survey_year_prev = df_to_use[
