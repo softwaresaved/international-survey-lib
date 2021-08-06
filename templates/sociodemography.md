@@ -20,17 +20,21 @@ Questions in this section:
 
 ## {{country}}
 
+{{#t_age}}
 ### Age
 
 {{t_age}}
 
 {{{f_age}}}
+{{/t_age}}
 
+{{#t_gender}}
 ### Gender
 
 {{t_gender}}
 
 {{{f_gender}}}
+{{#t_gender}}
 
 {{#t_ethnicity}}
 ### Ethnicity
