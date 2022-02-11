@@ -34,7 +34,7 @@ Questions in this section:
 {{t_gender}}
 
 {{{f_gender}}}
-{{#t_gender}}
+{{/t_gender}}
 
 {{#t_ethnicity}}
 ### Ethnicity
