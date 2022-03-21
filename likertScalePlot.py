@@ -235,7 +235,7 @@ def drawing_x_labels(ax, normalise, complete_longest, longest_middle):
 def likert_scale(df, ax=None, normalise=True, labels=True, middle_line=True,
                  legend=True, rotation=0, title_plot=False, rounding=True,
                  legend_loc="lower center", legend_ncol=10,
-                 bbox_to_anchor=None, wrap_text=20):
+                 bbox_to_anchor=None, wrap_text=40):
     """
     The idea is to create a fake bar on the left to center the bar on the same point.
     :params:
