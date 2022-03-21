@@ -296,6 +296,10 @@ def likert_scale(df, ax=None, normalise=True, labels=True, middle_line=True,
         if not math.isnan(complete_longest):
             ax.set_xlim([-0.5, complete_longest + 0.5])
 
+        # Fix: move graphing upwards to leave room for legend at bottom
+        # which may need to accommodate taller labels
+        ax.set_ylim([-1, len(df.index)*0.9])
+
         # Drawing x_labels
         drawing_x_labels(ax, normalise, complete_longest, longest_middle)
         ax.set_xlabel('Percentage')
@@ -314,7 +318,9 @@ def likert_scale(df, ax=None, normalise=True, labels=True, middle_line=True,
 
         # Add legend
         if legend:
-            ax.legend(bars, df.columns, fontsize=10, loc=legend_loc,
+            # Fix: wrap long labels
+            legend_columns = [wrap_labels(labels, 6) for labels in df.columns]
+            ax.legend(bars, legend_columns, fontsize=10, loc=legend_loc,
                       mode="expand", ncol=legend_ncol, bbox_to_anchor=bbox_to_anchor)
 
         # Change the plot title

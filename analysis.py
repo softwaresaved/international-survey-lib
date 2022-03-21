@@ -379,13 +379,14 @@ def count_ranking(df, columns, country, category, survey_year):
 def plotting_likert(
     df, country, category, to_plots, survey_year, type_orga="horizontal", order_scale=None
 ):
-    # nbr_plots = len(to_plots)
+    #nbr_plots = len(to_plots)
     nbr_plots = 1
 
     if type_orga == "vertical":
         fig, axs = plt.subplots(nbr_plots, 1, sharex=True, figsize=(9, 4))
     else:
-        fig, axs = plt.subplots(1, nbr_plots, figsize=(9, 4))
+        # Fix: calculate based on number of plots, to avoid over-high Likerts
+        fig, axs = plt.subplots(1, nbr_plots, figsize=(9, 2.5 + len(to_plots)))
     list_plots = list()
 
     for i, one_plot in enumerate(to_plots):
