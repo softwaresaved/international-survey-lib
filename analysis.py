@@ -403,8 +403,7 @@ def plotting_likert(
                 count_likert(df_country_survey_year, order_scale).transpose(),
                 normalise=True,
                 legend=True,
-                # Fix: superfluous - already text that covers this in template, so remove
-                #title_plot="{}: {}".format(category, country),
+                title_plot="{}: {}".format(category, country),
                 ax=axs[i],
             )
             axs[i].set_title(category)
@@ -415,8 +414,7 @@ def plotting_likert(
                 count_likert(df_country_survey_year, order_scale).transpose(),
                 normalise=True,
                 legend=True,
-                # Fix: superfluous - already text that covers this in template, so remove
-                #title_plot="{}: {}".format(category, country),
+                title_plot="{}: {}".format(category, country),
                 ax=axs,
             )
             axs.set_title(category)
