@@ -13,10 +13,11 @@ def create_runner(init_modules: List[str], survey_root: str = "survey"):
         modules = [f"{survey_root}.{s[:-3]}"
                    for s in os.listdir(survey_root) if s.endswith(".py")]
         modules = [m for m in modules if m not in init_modules]
-        if "RSE_SURVEY_YEAR" not in os.environ and yeare.match(__file__):
-            year = yeare.match(__file__).groups()[0]
-            os.environ["RSE_SURVEY_YEAR"] = year
-            print(f"Detected year as {year}, setting RSE_SURVEY_YEAR")
+
+        # Fix: just exit if current/previous survey years not defined in envionment
+        if "RSE_SURVEY_YEAR" not in os.environ or "RSE_SURVEY_YEAR_PREV" not in os.environ:
+            print("**** No survey year / previous survey year set in environment, exiting")
+            sys.exit(1)
         if len(sys.argv) == 1:
             run_modules = init_modules + modules
         elif sys.argv[1] == "init":

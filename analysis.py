@@ -64,7 +64,8 @@ def count_multi_column(
     raise NotImplementedError
 
 
-def count_one_choice(df, country, order_question=False, dropna=False, normalize=False):
+# Fix: rename 2nd parameter to category (not used, but still)
+def count_one_choice(df, category, order_question=False, dropna=False, normalize=False):
     """
     Count the values of different columns and transpose the count
     :params:
@@ -101,7 +102,11 @@ def count_multi_choice(df, category, dropna=True):
     for col in df_sub:
         if len(df_sub[col].unique()) > 1:
             col_to_keep.append(col)
-    df_final = df_sub[col_to_keep]
+
+    # Fix: don't reduce to available unique data at this early stage - zero counts cause exceptions
+    # do this later in count_diff when it returns
+    #df_final = df_sub[col_to_keep]
+    df_final = df_sub
 
     # As the No can be considered as absence of Yes, fill the value 'No' with na to keep Yes only
     df_final = df_final.fillna(value="No")
@@ -114,6 +119,10 @@ def count_multi_choice(df, category, dropna=True):
 
     # Replace all the 0 with NA
     df_final.fillna(value=0, inplace=True)
+
+    # Fix: in case there are zero "Yes" entries, which otherwise causes KeyError failure
+    if "Yes" not in df_final.index:
+        df_final.loc["Yes", :] = 0
 
     df_final = df_final.loc["Yes"]
 
@@ -248,13 +257,26 @@ def count_diff(
 
         else:
             count_current_field_survey_year_prev = count_one_choice(df_country_survey_year_prev, category)
+
+        # Fix: not set if nothing in percentage column, so set to zero
+        if "Percentage" not in count_current_field_survey_year.columns:
+            count_current_field_survey_year.index = count_current_field_survey_year_prev.index.copy()
+            count_current_field_survey_year["Percentage"] = 0.0
+
     else:
         count_current_field_survey_year_prev = None
+
+        # Fix: set % to zero if not set
+        if "Percentage" not in count_current_field_survey_year:
+            count_current_field_survey_year.loc[:, "Percentage"] = 0.0
+
+
     # Calculate the difference
     try:
         count_current_field_survey_year[f"Percentage in {survey_year_prev}"] = count_current_field_survey_year_prev[
             "Percentage"
         ]
+
         count_current_field_survey_year["Difference with previous year"] = (
             count_current_field_survey_year["Percentage"]
             - count_current_field_survey_year_prev["Percentage"]
@@ -269,6 +291,9 @@ def count_diff(
 
     # Drop all columns with full na. It removes Difference if it does not exists
     count_current_field_survey_year.dropna(axis=1, how="all", inplace=True)
+
+    # Fix: drop all rows with all values equal to zero, otherwise end up with huge tables
+    count_current_field_survey_year = count_current_field_survey_year[count_current_field_survey_year.any(axis=1).reindex(count_current_field_survey_year.index, fill_value=False)]
 
     # Change name of index
     col_name = "{} for {}".format(category, country)
@@ -354,7 +379,6 @@ def count_ranking(df, columns, country, category, survey_year):
 def plotting_likert(
     df, country, category, to_plots, survey_year, type_orga="horizontal", order_scale=None
 ):
-    """"""
     # nbr_plots = len(to_plots)
     nbr_plots = 1
 
@@ -374,11 +398,13 @@ def plotting_likert(
         ]
         df_country_survey_year = df_country_survey_year.drop("Year", axis="columns")
         try:
+            # Note: this never successfully completes and the TypeError is always raised
             axs[i] = likert_scale(
                 count_likert(df_country_survey_year, order_scale).transpose(),
                 normalise=True,
                 legend=True,
-                title_plot="{}: {}".format(category, country),
+                # Fix: superfluous - already text that covers this in template, so remove
+                #title_plot="{}: {}".format(category, country),
                 ax=axs[i],
             )
             axs[i].set_title(category)
@@ -389,7 +415,8 @@ def plotting_likert(
                 count_likert(df_country_survey_year, order_scale).transpose(),
                 normalise=True,
                 legend=True,
-                title_plot="{}: {}".format(category, country),
+                # Fix: superfluous - already text that covers this in template, so remove
+                #title_plot="{}: {}".format(category, country),
                 ax=axs,
             )
             axs.set_title(category)
@@ -410,7 +437,6 @@ def plotting_time_likert(
     df_time_diff=None,
     dict_time_diff=None,
 ):
-    """"""
     nbr_plots = len(
         [x for x in [df_time_spent, df_time_wish, df_time_diff] if x is not None]
     )
@@ -564,6 +590,7 @@ def plot_density_func(df, columns, category, country, survey_year, remove_outlie
 
 
 def plot_cat_comparison(df, country, category, order_index=False, width=6.4):
+
     # Plotting the current categories and the difference with the last year
     from matplotlib import rcParams
     rcParams.update({'figure.autolayout': True})
@@ -708,10 +735,12 @@ def plot_wordcloud(df, columns, country, category, survey_year):
         (df_to_sample["Country"] == country) & (df_to_sample["Year"] == survey_year)
     ]
     txt_to_plot = wrap_clean_text(df, columns)
-    plot = _plot_wordcloud(txt_to_plot)
-    plt.imshow(plot, cmap=plt.cm.gray, interpolation="bilinear")
-    plt.axis("off")
-    plt.title("{}, {}".format(category, country))
+    # Fix: only plot if plot isn't empty, otherwise exception
+    if txt_to_plot:
+        plot = _plot_wordcloud(txt_to_plot)
+        plt.imshow(plot, cmap=plt.cm.gray, interpolation="bilinear")
+        plt.axis("off")
+        plt.title("{}, {}".format(category, country))
 
 
 def radar_plotting(

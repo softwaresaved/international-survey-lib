@@ -43,17 +43,17 @@ Questions in the sections:
 
 {{{f_which-university}}}
 
-### Type of contract
+### Full time or part-time
 
 {{t_contract-type}}
 
 {{{f_contract-type}}}
 
-### Full time or part-time
+### Type of contract
 
-{{t_nature_of-employment}}
+{{t_nature-of-employment}}
 
-{{{f_nature_of_employment}}}
+{{{f_nature-of_employment}}}
 
 ### Length of current position
 

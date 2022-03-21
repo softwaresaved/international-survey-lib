@@ -73,7 +73,7 @@ def wrap_labels(label, max_size=10):
         label_to_return = list()
         n = 0
         for letter in label:
-            n +=1
+            n += 1
             if n >= max_size:
                 if letter == ' ':
                     letter = '\n'
@@ -235,7 +235,7 @@ def drawing_x_labels(ax, normalise, complete_longest, longest_middle):
 def likert_scale(df, ax=None, normalise=True, labels=True, middle_line=True,
                  legend=True, rotation=0, title_plot=False, rounding=True,
                  legend_loc="lower center", legend_ncol=10,
-                 bbox_to_anchor=None, wrap_text=100):
+                 bbox_to_anchor=None, wrap_text=20):
     """
     The idea is to create a fake bar on the left to center the bar on the same point.
     :params:
@@ -292,7 +292,9 @@ def likert_scale(df, ax=None, normalise=True, labels=True, middle_line=True,
         # Set up the limit from 0 to the longest total barchart
         # Keeping this drawing before drawing_x_labels or it will failed to draw
         # all the labels on the right side
-        ax.set_xlim([-0.5, complete_longest + 0.5])
+        # Fix: check for nan
+        if not math.isnan(complete_longest):
+            ax.set_xlim([-0.5, complete_longest + 0.5])
 
         # Drawing x_labels
         drawing_x_labels(ax, normalise, complete_longest, longest_middle)

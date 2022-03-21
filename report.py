@@ -51,11 +51,13 @@ def make_report(file):
         def func(**kwargs):
             base = Path(file).stem.replace("_", "-")
             year = os.environ.get("RSE_SURVEY_YEAR")
-            if year is None:
-                print("Set current year in RSE_SURVEY_YEAR environment variable")
+            prev_year = os.environ.get("RSE_SURVEY_YEAR_PREV")
+            if year is None or prev_year is None:
+                print("Set current and previous years in RSE_SURVEY_YEAR and RSE_SURVEY_YEAR_PREV environment variable")
                 sys.exit(1)
             else:
                 year = int(year)
+                prev_year = int(prev_year)
             filename = base + ".md"
             template = first_existing(
                 [Path("templates") / filename, Path("lib/templates") / filename]
@@ -87,6 +89,14 @@ def make_report(file):
 def table(name, data, index=True):
     csv = "csv/%s.csv" % name
     data.to_csv(csv, index=index)
+
+    # Fix: allow for zero data
+    if len(data.index) == 0:
+        return {
+            "t_"
+            + name: "No data found in survey."
+        }
+
     return {
         "t_"
         + name: data.to_markdown(index=index)
@@ -97,6 +107,14 @@ def table(name, data, index=True):
 def table_country(country, name, data, index=True):
     csv = "csv/%s_%s.csv" % (name, slugify(country))
     data.to_csv(csv, index=index)
+
+    # Fix: allow for zero data
+    if len(data.index) == 0:
+        return {
+            "t_"
+            + name: "No data found in survey."
+        }
+
     return {
         "t_"
         + name: data.to_markdown(index=index)
@@ -130,6 +148,7 @@ def figure(name, plt, country=None):
         figpath = f"fig/{slug}.{figure_type}"
         plt.savefig(figpath, dpi=FIGURE_DPI)
         if figure_type == "svg":
+            plt.tight_layout()
             embedded_image = f"{{% raw %}}\n{svg_tag_text(figpath)}\n{{% endraw %}}"
         image_links[figure_type] = f"{BASEURL}{figpath}"
     plt.close('all')
