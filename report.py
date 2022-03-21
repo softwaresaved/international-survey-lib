@@ -146,9 +146,9 @@ def figure(name, plt, country=None):
     embedded_image = ""
     for figure_type in FIGURE_TYPE:
         figpath = f"fig/{slug}.{figure_type}"
+        plt.tight_layout()
         plt.savefig(figpath, dpi=FIGURE_DPI)
         if figure_type == "svg":
-            plt.tight_layout()
             embedded_image = f"{{% raw %}}\n{svg_tag_text(figpath)}\n{{% endraw %}}"
         image_links[figure_type] = f"{BASEURL}{figpath}"
     plt.close('all')
