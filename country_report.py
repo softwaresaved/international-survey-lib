@@ -6,14 +6,15 @@ from pathlib import Path
 import chevron
 
 import sys
-from lib.report import COUNTRIES_WITH_WORLD, BASEURL, slugify, svg_tag_text
+from lib.report import COUNTRIES_WITH_WORLD, BASEURL, slugify, svg_tag_text, first_existing
 
 FIGURE_TYPE = os.environ.get("RSE_SURVEY_FIGURE_TYPE", "svg")
 
 
-def read_template(template):
+def read_template(templatepath):
     data = collections.defaultdict(list)
-    with open(template) as fp:
+    #with open(templatepath) as fp:
+    with templatepath.open() as fp:
         for line in fp:
             if not line.startswith("{{"):
                 continue
@@ -37,10 +38,11 @@ def table_markup(path):
     )
 
 
-def template_data(country):
+def template_data(country, templatepath):
     data = {"country": country}
     country_slug = slugify(country)
-    template = read_template("lib/templates/country-report.md")
+    #template = read_template("lib/templates/country-report.md")
+    template = read_template(templatepath)
     data.update(
         {
             f"t_{key}": table_markup(f"csv/{key}_{country_slug}.csv")
@@ -66,14 +68,18 @@ def template_data(country):
 
 
 def run():
-    template = Path("lib") / "templates" / "country-report.md"
+    # Fix: ensure country report template is also read from any optional local override
+    # of templates if it exists
+    templatepath = first_existing(
+        [Path("templates") / "country-report.md", Path("lib/templates") / "country-report.md"]
+    )
     folder = Path("_country")
     if not folder.exists():
         folder.mkdir()
     for country in COUNTRIES_WITH_WORLD:
-        with template.open() as fp:
+        with templatepath.open() as fp:
             (folder / (slugify(country) + ".md")).write_text(
-                chevron.render(fp, template_data(country))
+                chevron.render(fp, template_data(country, templatepath))
             )
 
 
