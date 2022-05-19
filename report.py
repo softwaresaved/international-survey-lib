@@ -97,6 +97,9 @@ def table(name, data, index=True):
             + name: "No data found in survey."
         }
 
+    # Fix: set lower precision for markdown
+    data = data.round(decimals=2)
+
     return {
         "t_"
         + name: data.to_markdown(index=index)
@@ -114,6 +117,9 @@ def table_country(country, name, data, index=True):
             "t_"
             + name: "No data found in survey."
         }
+
+    # Fix: set lower precision for markdown
+    data = data.round(decimals=2)
 
     return {
         "t_"
