@@ -32,8 +32,14 @@ def read_template(templatepath):
 def table_markup(path):
     if not Path(path).exists():
         return ""
+
+    data = pd.read_csv(path)
+
+    # Fix: set lower precision for markdown
+    data = data.round(decimals=2)
+
     return (
-        pd.read_csv(path).to_markdown(index=False)
+        data.to_markdown(index=False)
         + f"\n\n[Download CSV]({BASEURL}{path}){{: .button}}"
     )
 
@@ -41,7 +47,6 @@ def table_markup(path):
 def template_data(country, templatepath):
     data = {"country": country}
     country_slug = slugify(country)
-    #template = read_template("lib/templates/country-report.md")
     template = read_template(templatepath)
     data.update(
         {
@@ -49,6 +54,7 @@ def template_data(country, templatepath):
             for key in template["t"]
         }
     )
+
     if FIGURE_TYPE == "svg":
         figure_data = [(key, f"fig/{key}_{country_slug}.svg") for key in template["f"]]
         data.update(
