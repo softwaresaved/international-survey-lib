@@ -51,7 +51,6 @@ def count_y_n(df, category, normalize=False, dropna=True):
     # results = results.reset_index()
     results.set_index(category, inplace=True)
     results.columns = ["Count"]
-    # print(df_sub.loc['Yes'])
     results["Percentage"] = (results["Count"] / results["Count"].sum()) * 100
 
     results = results.reindex(["Yes", "No"])
@@ -553,6 +552,15 @@ def plot_density_func(df, columns, category, country, survey_year, remove_outlie
     df = df_sampled[df_sampled.Country == country]
     # Remove na
     df = df.dropna(inplace=False)
+
+    # Fix: nothing to plot, so exit
+    if len(df) == 0:
+        fig, axarr = plt.subplots(1, 1, figsize=(8, 0.5))
+        axarr.axis('off')
+        title = f"{category} for {country}: no data to plot"
+        fig.suptitle(title)
+        return
+
     # Remove the outliers
     if remove_outliers:
         df_survey_year = df[df.Year == survey_year]
@@ -603,6 +611,7 @@ def plot_cat_comparison(df, country, category, order_index=False, width=6.4):
     ind = np.arange(len(df.index))
     height = (len(df.index) / 3 + 1) if len(df.index) > 2 else 1.25
 
+    rects = []
     try:
         fig, axs = plt.subplots(
             1, 2, sharey=True, figsize=(width, height), gridspec_kw={"width_ratios": [7, 1]}
@@ -635,10 +644,12 @@ def plot_cat_comparison(df, country, category, order_index=False, width=6.4):
         # Set up columns
         fig, ax = plt.subplots(figsize=(width, height))
         if order_index is False:
-            df.sort_values("Percentage", ascending=False, inplace=True)
+            if "Percentage" in df.columns:
+                df.sort_values("Percentage", ascending=False, inplace=True)
 
         # current field
-        plt.barh(ind, df["Percentage"], align="center")
+        if "Percentage" in df.columns:
+            plt.barh(ind, df["Percentage"], align="center")
         plt.title("{}, {}".format(category, country))
         ax.spines['top'].set_visible(False)
         ax.spines['right'].set_visible(False)
@@ -728,18 +739,24 @@ def plot_ranking(df, category, country):
 
 
 def plot_wordcloud(df, columns, country, category, survey_year):
-    plt.figure(figsize=(6, 4.5))
     df_to_sample = get_sampled_df(df, columns=columns)
     df = df_to_sample[
         (df_to_sample["Country"] == country) & (df_to_sample["Year"] == survey_year)
     ]
     txt_to_plot = wrap_clean_text(df, columns)
     # Fix: only plot if plot isn't empty, otherwise exception
-    if txt_to_plot:
-        plot = _plot_wordcloud(txt_to_plot)
-        plt.imshow(plot, cmap=plt.cm.gray, interpolation="bilinear")
-        plt.axis("off")
-        plt.title("{}, {}".format(category, country))
+    if not txt_to_plot:
+        fig, axarr = plt.subplots(1, 1, figsize=(8, 0.5))
+        axarr.axis('off')
+        title = "{}, {}: no data to plot".format(category, country)
+        fig.suptitle(title)
+        return
+
+    plt.figure(figsize=(6, 4.5))
+    plot = _plot_wordcloud(txt_to_plot)
+    plt.imshow(plot, cmap=plt.cm.gray, interpolation="bilinear")
+    plt.axis("off")
+    plt.title("{}, {}".format(category, country))
 
 
 def radar_plotting(
