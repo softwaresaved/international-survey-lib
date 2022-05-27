@@ -458,10 +458,10 @@ def plotting_time_likert(
                 legend_ncol=ncol,
                 bbox_to_anchor=bbox_to_anchor,
                 wrap_text=wrap_text,
-                title_plot="{}: Time spent for each type of activity".format(country),
                 ax=axs[0],
             )
-            axs[0].set_title("Time spent")
+            # Fix: clarify plot title
+            axs[0].set_title(f"{country}: How respondents spend their time")
             list_plots.append(axs[0])
 
         except TypeError:
@@ -476,10 +476,10 @@ def plotting_time_likert(
                 legend_ncol=ncol,
                 bbox_to_anchor=bbox_to_anchor,
                 wrap_text=wrap_text,
-                title_plot="{}: Time spent for each type of activity".format(country),
                 ax=axs,
             )
-            axs.set_title("Time spent")
+            # Fix: clarify plot title
+            axs.set_title(f"{country}: How respondents spend their time")
             list_plots.append(axs)
 
     if df_time_wish is not None:
@@ -494,12 +494,10 @@ def plotting_time_likert(
             legend_ncol=ncol,
             bbox_to_anchor=bbox_to_anchor,
             wrap_text=wrap_text,
-            title_plot="{}: Time wish to spent for each type of activity".format(
-                country
-            ),
             ax=axs[1],
         )
-        axs[1].set_title("Time wish to spent")
+        # Fix: clarify plot title
+        axs[1].set_title(f"{country}: How respondents would like to spend their time")
 
         list_plots.append(axs[1])
 
@@ -530,12 +528,10 @@ def plotting_time_likert(
             legend_ncol=ncol,
             bbox_to_anchor=bbox_to_anchor,
             wrap_text=wrap_text,
-            title_plot="{}: Difference between time wish to spent and actually spent for each type of activity".format(
-                country
-            ),
             ax=axs[2],
         )
-        axs[2].set_title("Difference between time spent and wish")
+        # Fix: clarify plot title
+        axs[2].set_title(f"{country}: Difference between how respondents spend their time\nand how they would like to spend their time")
         list_plots.append(axs[2])
 
     for ax in list_plots:
