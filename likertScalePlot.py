@@ -304,6 +304,9 @@ def likert_scale(df, ax=None, normalise=True, labels=True, middle_line=True,
         drawing_x_labels(ax, normalise, complete_longest, longest_middle)
         ax.set_xlabel('Percentage')
 
+        # Fix: remove limescale id prefixes (if they exist) from question labels
+        df.index = [label[label.find('. ')+2:] if label.find('. ') >= 0 else label for label in df.index]
+
         # Setting up the y-axis
         ax.set_yticks(y_pos)
         ax.set_yticklabels([wrap_labels(labels, wrap_text) for labels in df.index], fontsize=11)

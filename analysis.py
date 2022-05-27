@@ -390,13 +390,13 @@ def plotting_likert(
 
     for i, one_plot in enumerate(to_plots):
         columns = to_plots
-        category = category
         df_sub = get_sampled_df(df, columns=columns)
 
         df_country_survey_year = df_sub[
             (df_sub["Country"] == country) & (df_sub["Year"] == survey_year)
         ]
         df_country_survey_year = df_country_survey_year.drop("Year", axis="columns")
+
         try:
             # Note: this never successfully completes and the TypeError is always raised
             axs[i] = likert_scale(
