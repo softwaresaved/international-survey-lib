@@ -43,7 +43,11 @@ def read_cache(name):
         raise ValueError(
             "Cached item '%s' not found, run overview_and_sampling to generate"
         )
-    return pd.read_csv(cache_folder / (name + ".csv"))
+
+    # Fix: ensure we use low_memory=False, otherwise Pandas chunks the columns when reading the
+    # dataset to determine data types which is a bit random and causes warnings. Note this uses
+    # more memory however
+    return pd.read_csv(cache_folder / (name + ".csv"), low_memory=False)
 
 
 def make_report(file):
