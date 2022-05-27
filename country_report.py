@@ -35,6 +35,10 @@ def table_markup(path):
 
     data = pd.read_csv(path)
 
+    # Fix: allow for zero data
+    if len(data.index) == 0:
+        return ("No data found in survey.")
+
     # Fix: set lower precision for markdown
     data = data.round(decimals=2)
 
@@ -56,7 +60,8 @@ def template_data(country, templatepath):
     )
 
     if FIGURE_TYPE == "svg":
-        figure_data = [(key, f"fig/{key}_{country_slug}.svg") for key in template["f"]]
+        figure_path = f"fig/{key}_{country_slug}.svg"
+        figure_data = [(key, figure_path) for key in template["f"] if Path(figure_path).exists()]
         data.update(
             {
                 f"f_{key}": f"{{% raw %}}\n{svg_tag_text(value)}\n{{% endraw %}}"
@@ -67,7 +72,7 @@ def template_data(country, templatepath):
         data.update(
             {
                 f"f_{key}": f"![{key}]({BASEURL}fig/{key}_{country_slug}.png)"
-                for key in template["f"]
+                for key in template["f"] if Path(f"fig/{key}_{country_slug}.png").exists()
             }
         )
     return data
