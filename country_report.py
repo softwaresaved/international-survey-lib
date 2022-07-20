@@ -60,8 +60,13 @@ def template_data(country, templatepath):
     )
 
     if FIGURE_TYPE == "svg":
-        figure_path = f"fig/{key}_{country_slug}.svg"
-        figure_data = [(key, figure_path) for key in template["f"] if Path(figure_path).exists()]
+        #figure_data = [(key, figure_path) for key in template["f"] if Path(f"fig/{key}_{country_slug}.svg").exists()]
+        figure_data = []
+        for key in template["f"]:
+            figure_path = f"fig/{key}_{country_slug}.svg"
+            if Path(figure_path).exists():
+                figure_data.append((key, figure_path))
+
         data.update(
             {
                 f"f_{key}": f"{{% raw %}}\n{svg_tag_text(value)}\n{{% endraw %}}"
