@@ -541,10 +541,10 @@ def plotting_time_likert(
         ax.invert_yaxis()
 
 
-def plot_density_func(df, columns, category, country, survey_year, remove_outliers=True):
+def plot_density_func(df, columns, category, country, survey_year, unit_label="Value", remove_outliers=True):
     survey_year_prev = get_previous_survey_year(survey_year)
     df_sampled = get_sampled_df(df, columns=columns)
-    df_sampled.columns = ["Country", "Year", "Value"]
+    df_sampled.columns = ["Country", "Year", unit_label]
     df = df_sampled[df_sampled.Country == country]
     # Remove na
     df = df.dropna(inplace=False)
@@ -560,26 +560,28 @@ def plot_density_func(df, columns, category, country, survey_year, remove_outlie
     # Remove the outliers
     if remove_outliers:
         df_survey_year = df[df.Year == survey_year]
-        df_survey_year = df_survey_year[(df_survey_year.Value < np.percentile(df_survey_year.Value, 95))]
+        #df_survey_year = df_survey_year[(df_survey_year.Value < np.percentile(df_survey_year.Value, 95))]
+        df_survey_year = df_survey_year[(df_survey_year[unit_label] < np.percentile(df_survey_year[unit_label], 95))]
         df_survey_year_prev = df[df.Year == survey_year_prev]
-        if len(df[df["Year"] == survey_year_prev]) > 0:
 
-            df_survey_year_prev = df_survey_year_prev[(df_survey_year_prev.Value < np.percentile(df_survey_year_prev.Value, 95))]
+        if len(df[df["Year"] == survey_year_prev]) > 0:
+            #df_survey_year_prev = df_survey_year_prev[(df_survey_year_prev.Value < np.percentile(df_survey_year_prev.Value, 95))]
+            df_survey_year_prev = df_survey_year_prev[(df_survey_year_prev[unit_label] < np.percentile(df_survey_year_prev[unit_label], 95))]
             df = pd.concat([df_survey_year, df_survey_year_prev])
         else:
             df = df_survey_year
         df.dropna(inplace=True)
 
     fig, axarr = plt.subplots(1, 2, figsize=(8, 6))
-    sns.boxplot(x="Year", y="Value", data=df, ax=axarr[0])
+    sns.boxplot(x="Year", y=unit_label, data=df, ax=axarr[0])
 
     sns.swarmplot(
-        x="Year", y="Value", data=df, ax=axarr[0], color="grey", alpha=0.75
+        x="Year", y=unit_label, data=df, ax=axarr[0], color="grey", alpha=0.75
     )  # .set_title('{}: {}'.format(category, country))
 
     sns.histplot(
         df,
-        x="Value",
+        x=unit_label,
         ax=axarr[1],
         hue="Year",
         multiple="dodge",
